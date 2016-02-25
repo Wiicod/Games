@@ -1,0 +1,517 @@
+/* templatemo 400 polygon */
+/*
+Polygon Template
+http://www.templatemo.com/preview/templatemo_400_polygon
+*/
+
+/* Menu */
+
+
+.templatemorow	{ margin: 0px 30px; }
+.templatemo_servicerow	{ margin: 0px; }
+.blok	{ position: absolute; }
+.hex	{ width: 20%; float: left; }
+.hex-offset	{ margin-left: 10%; }
+.hexagon2, .hexagonteam {
+    position: absolute;
+    width: 200px;
+    height: 400px;
+    top: -85px;
+}
+.hexagonteam {
+    position: absolute;
+    width: 200px;
+    height: 350px;
+    top: -85px;
+}
+.hexagon {
+    overflow: hidden;
+    visibility: hidden;
+
+    -webkit-transform: rotate(120deg);
+    -moz-transform: rotate(120deg);
+    -o-transform: rotate(120deg);
+    -ms-transform: rotate(120deg);
+    transform: rotate(120deg);
+    cursor: pointer;
+}
+
+.hexagon-in1 {
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+
+    -webkit-transform: rotate(-60deg);
+    -moz-transform: rotate(-60deg);
+    -o-transform: rotate(-60deg);
+    -ms-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+}
+
+.hexagon-in2 {
+    /*-webkit-box-shadow: inset 0 0 0 200px rgba(176, 218, 212, 0.48);
+    box-shadow: inset 0 0 0 200px rgba(176, 218, 212, 0.48);*/
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: url(../img/bg-white.png);
+    background-repeat: no-repeat;
+    background-position: 50%;
+
+    -webkit-background-size: 125%;
+    -moz-background-size: 125%;
+    background-size: 125%;
+    visibility: visible;
+
+    -webkit-transform: rotate(-60deg);
+    -moz-transform: rotate(-60deg);
+    -o-transform: rotate(-60deg);
+    -ms-transform: rotate(-60deg);
+    transform: rotate(-60deg);
+
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.hexagon-in2:hover {
+    webkit-box-shadow: inset 0 0 0 200px rgba(36,36,36, 0.7);
+    box-shadow: inset 0 0 0 200px rgba(36,36,36, 0.7);
+}
+
+.hexagon2-btn .hexagon-in2:hover {
+    box-shadow: none;
+}
+
+/*------------------------------------------------------
+	Gallery Styles
+--------------------------------------------------------*/
+.gallery-item {
+    background-color: white;
+    -webkit-box-shadow: inset 0 0 1px #666;
+    -moz-box-shadow: inset 0 0 1px #666;
+    margin-bottom: 30px;
+    /*position: relative;*/
+    overflow: hidden;
+}
+.gallery-item .content-gallery {
+    text-align: center;
+}
+.gallery-item .content-gallery h3 {
+    color: #b10021;
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 5px;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+.gallery-item img {
+    width: 100%;
+}
+.gallery-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    height: 100%;
+    display: block;
+    -webkit-transition: all 50ms ease-in-out;
+    -moz-transition: all 50ms ease-in-out;
+    -ms-transition: all 50ms ease-in-out;
+    -o-transition: all 50ms ease-in-out;
+    transition: all 50ms ease-in-out;
+}
+.gallery-item .overlay a {
+    /*color: #2a2a2a;*/
+    /*width: 50%;*/
+    /*height: 32px;*/
+    /*background-color: #d3b850;*/
+    background: url('../img/option_hexa_hover.png') no-repeat center center;
+    background-size: cover;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 32px;
+    position: absolute;
+    top: 37%;
+    left: 39%;
+    margin-top: -16px;
+    margin-left: -16px;
+}
+
+.gallery-item .overlay .btn-floating{
+    box-shadow: none;
+}
+
+.gallery-item .overlay .btn-floating.btn-large {
+    width: 55.5px;
+    height: 65.5px;
+}
+
+#nav-jeu .gallery-item .overlay .btn-floating.btn-large {
+    width: 43.5px;
+    height: 65.5px;
+}
+
+.gallery-item .overlay .btn-floating.btn-large i {
+    line-height: 66.5px;
+    font-size: 50px;
+    color: #CC0000;
+}
+
+.hexagon2-btn
+{
+    position: absolute;
+    width: 45px;
+    height: 53px;
+    top:-5px;
+    right: 0 !important;
+}
+#nav-jeu .navbar-header{
+    margin-top: 5%;
+    color: white;
+    width: 100%
+}
+#nav-jeu .container-fluid{
+    padding-top: 4%;
+    padding-right: 0px;
+}
+#nav-jeu .row{
+    margin-right: -25px;
+}
+#nav-jeu span.time{
+    margin-left: 15px;
+}
+#nav-jeu .hexagon2-btn .gallery-item .overlay a{
+    left :24% !important;
+}
+
+#nav-jeu .hexagon2-btn .gallery-item .overlay .btn-floating.btn-large i {
+    line-height: 45.5px;
+    font-size: 40px;
+    color: #CC0000;
+}
+
+#menu .info{
+    display: none;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen
+and (min-device-width : 320px)
+and (max-width : 419px)	{
+    .hexagon2-btn{
+        top: -7px !important;
+    }
+    #nav-jeu .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 47.5px;
+        font-size: 40px;
+    }
+    #jeu, #menu{
+        /*background: red;*/
+    }
+
+    .hex	{ width: 50%; float: left; }
+    .templatemorow	{ margin: 0 2%; }
+    .hexagon2
+    {
+        position: absolute;
+        width: 110px;
+        height: 128px;
+        top: 0px;
+    }
+    #nav-jeu .hexagon2-btn
+    {
+        position: absolute;
+        width: 45px;
+        height: 53px;
+    }
+
+    #nav-jeu .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 47.5px;
+        font-size: 40px;
+    }
+
+
+    .templatemo-hex-top1	{ margin-top: 300px; }
+    .templatemo-hex-top2	{ margin-top: 100px; margin-left: 25%; }
+    .templatemo-hex-top3	{ margin-top: 100px; }
+    .templatemo_gallerytop	{ margin-top: 32%; }
+    .templatemo_loadmore	{ margin-top: 53%; }
+    .templatemo_servicetxt	{ margin-top: 230px; }
+    .templatemo_servicecol2	{ margin-top: 10%; float: left; }
+    .templatemo_contactmap	{ width: 250px; height: 292px; float: left; }
+    .templatemo_contactmap img{ position: absolute; width: 250px; height: 292px; top: 0px; left: 15px; }
+    #templatemo_map {
+        width: 100%;
+        height: 292px;
+    }
+    .blok	{ left: 13%; }
+}
+
+@media (min-width : 420px)
+and (max-width : 559px)	{
+    #nav-jeu .container-fluid{
+        padding-top: 0 !important;
+    }
+    .hexagon2-btn{
+        top: -3px !important;
+    }
+    #nav-jeu .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 47.5px;
+        font-size: 40px;
+    }
+
+    #jeu, #menu{
+        /*background: pink;*/
+    }
+    #menu .verticalcenter{
+        top: 30% !important;
+    }
+    #menu .hex{
+        width: 18%;
+    }
+    #menu .hexagon2{
+        width: 75px;
+        height: 102px;
+    }
+    #menu .gallery-item .overlay a{
+        top:39%;
+    }
+    #menu .templatemo-hex-top2, #menu .templatemo-hex-top3{
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    #menu .gallery-item .overlay .btn-floating.btn-large{
+        width: 46.5px;
+        height: 53.5px;
+    }
+    #menu .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 51.5px;
+        font-size: 40px;
+    }
+
+    .hex	{ width: 50%; float: left; }
+    .templatemorow	{ margin: 0; }
+    .hexagon2
+    {
+        position: absolute;
+        width: 150px;
+        height: 175px;
+        top: 0px;
+    }
+    .templatemo-hex-top1	{ margin-top: 300px; }
+    .templatemo-hex-top2	{ margin-top: 130px; margin-left: 25%; }
+    .templatemo-hex-top3		{ margin-top: 130px; }
+    .templatemo_gallerytop	{ margin-top: 32%; }
+    .templatemo_loadmore	{ margin-top: 50%; }
+    .templatemo_servicetxt	{ margin-top: 230px; }
+    .templatemo_servicecol2	{ margin-top: 7%; float: left; }
+    .blok	{ left: 22%; }
+
+}
+
+@media(min-width:560px) and (max-width:767px)	{
+    #nav-jeu .container-fluid{
+        padding-top: 0 !important;
+    }
+    .hexagon2-btn{
+        top: -3px !important;
+    }
+    #nav-jeu .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 47.5px;
+        font-size: 40px;
+    }
+    #nav-jeu .navbar-header{
+        font-size: 20px;
+    }
+    #jeu, #menu{
+        /*background: green;*/
+    }
+    #menu .verticalcenter{
+        top: 35% !important;
+    }
+    #menu .hex{
+        width: 20%;
+    }
+    #menu .hexagon2{
+        width: 80px;
+        height: 116px;
+    }
+    #menu .gallery-item .overlay a{
+        top:38%;
+        left: 35%;
+    }
+    #menu .templatemo-hex-top2, #menu .templatemo-hex-top3{
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    #menu .gallery-item .overlay .btn-floating.btn-large{
+        width: 53.5px;
+        height: 60.5px;
+    }
+    #menu .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 60.5px;
+        font-size: 40px;
+    }
+    .hex	{ width: 50%; float: left; }
+    .templatemorow	{ margin: 0 10%; }
+    .hexagon2
+    {
+        position: absolute;
+        width: 200px;
+        height: 250px;
+        top: 0px;
+    }
+    .templatemo-hex-top1	{ margin-top: 300px; }
+    .templatemo-hex-top2	{ margin-top: 180px; margin-left: 25%; }
+    .templatemo-hex-top3		{ margin-top: 180px; }
+    .templatemo_gallerytop	{ margin-top: 33%; }
+    .templatemo_loadmore	{ margin-top: 48%; }
+    .templatemo_servicetxt	{ margin-top: 230px; }
+    .templatemo_servicecol2	{ margin-top: 7%; float: left; }
+    .blok	{ left: 33%; }
+
+}
+
+@media(min-width:768px) and (max-width: 991px){
+    #nav-jeu .container-fluid{
+        padding-top: 0 !important;
+    }
+    #nav-jeu .navbar-header{
+        font-size: 24px;
+    }
+    .hexagon2-btn{
+        width: 60px;
+        height: 84px;
+        top: -22px;
+    }
+    #nav-jeu .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 55.5px;
+    }
+    #nav-jeu .gallery-item .overlay a{
+        left: 35%;
+    }
+    #menu .gallery-item .overlay a{
+        top: 40%;
+        left: 41%;
+    }
+    #jeu, #menu{
+        /*background: purple;*/
+    }
+    .templatemorow	{ margin: 0 4%; }
+    .hexagon2
+    {
+        position: absolute;
+        width: 120px;
+        height: 180px;
+        top: -85px;
+    }
+
+    .templatemo-hex-top1	{ margin-top: 110px; }
+    .templatemo_servicecol2	{ margin-top: 15%; float: left; }
+    .s_top	{ margin-top: 14%; }
+    .hexagon-a	{ margin-left: 5px; }
+    .hexagon-a a	{ min-width: 190px; }
+    .hexagonservices a.hlinkbott	{ width: 200px; }
+    .templatemo_servicerow	{ margin: -10% 30px 0px 30px; }
+    .templatemo_hexservices	{ width: 100%; margin-top: 5%; }
+    .blok	{ left: 33%; }
+
+}
+@media(min-width:992px){
+    #nav-jeu .container-fluid{
+        padding-top: 0 !important;
+    }
+    #nav-jeu .navbar-header{
+        font-size: 24px;
+    }
+    .hexagon2-btn{
+        width: 60px;
+        height: 84px;
+        top: -22px;
+    }
+    #nav-jeu .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 55.5px;
+    }
+    #nav-jeu .gallery-item .overlay a{
+        left: 35%;
+    }
+    #jeu, #menu{
+        /*background: grey;*/
+    }
+    #menu .verticalcenter{
+        top: 42% !important;
+    }
+    #menu .gallery-item .overlay a{
+        top: 39%;
+        left: 38%;
+    }
+    #menu .templatemo-hex-top2, #menu .templatemo-hex-top3{
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    #menu .gallery-item .overlay .btn-floating.btn-large{
+        width: 70.5px;
+        height: 84.5px;
+    }
+    #menu .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 84.5px;
+        font-size: 60px;
+    }
+    .templatemorow	{ margin: 0 7%; }
+    .hexagon2
+    {
+        position: absolute;
+        width: 150px;
+        height: 250px;
+        top: -85px;
+    }
+    .templatemo-hex-top1	{ margin-top: 140px; }
+
+}
+
+@media(min-width:1200px){
+    #nav-jeu .container-fluid{
+        padding-top: 0 !important;
+    }
+    #nav-jeu .navbar-header{
+        font-size: 24px;
+    }
+    .hexagon2-btn{
+        width: 60px;
+        height: 84px;
+        top: -22px;
+    }
+    #nav-jeu .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 55.5px;
+    }
+    #nav-jeu .gallery-item .overlay a{
+        left: 35%;
+    }
+    #menu .gallery-item .overlay a{
+        top: 43%;
+        left: 44%;
+    }
+    #jeu, #menu{
+        /*background: aqua;*/
+    }
+    .templatemorow	{ margin: 0px 30px; }
+    .hexagon2 {
+        position: absolute;
+        width: 200px;
+        height: 250px;
+        top: -85px;
+    }
+    .templatemo-hex-top1	{ margin-top: 180px; }
+    .hexagon-a	{ left: 35%; }
+    .hexagon-a a	{ min-width: 190px; }
+    .hexagonservices a.hlinkbott	{ width: 200px; }
+    .templatemo_servicerow	{ margin: 30px 30px; }
+}

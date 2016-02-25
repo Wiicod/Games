@@ -1,15 +1,25 @@
-<nav class="navbar navbar-fixed-top danger-color-dark" role="navigation">
+<nav class="navbar navbar-fixed-top danger-color-dark" role="navigation" id="nav-jeu">
     <div class="container-fluid">
-        <div class="navbar-header verticalcenter" style="padding: 10px 0px; color: white">
-            <div class="row-fluid text-center">
-                <div class="col-xs-3">
+        <div class="navbar-header verticalcenter">
+            <div class="row text-center">
+                <div class="col-xs-3 col-md-3 col-sm-3 col-lg-3">
                     <span class="time">00:14</span>
                 </div>
-                <div class="col-xs-7">
+                <div class="col-xs-6 col-md-6 col-sm-6 col-lg-6">
                     <span class="score">{{score}}</span>
                 </div>
-                <div class="col-xs-2">
-                    <span><i class="fa fa-pause"></i></pull-right></span>
+                <div class="col-xs-2 col-md-2 col-sm-2 col-lg-2">
+                    <div class="hexagon hexagon2-btn gallery-item">
+                        <div class="hexagon-in1">
+                            <div class="hexagon-in2">
+                                <div class="overlay" ui-sref="home">
+                                    <a class="btn-floating btn-large">
+                                        <i class="material-icons">pause</i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

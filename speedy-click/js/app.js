@@ -34,18 +34,13 @@ angular.module('sc', ['ui.router', 'sc.controllers','sc.services'])
         $stateProvider
             .state('home', {
                 url: '/home',
-                templateUrl: 'templates/home.html',
+                templateUrl: 'templates/home-hexa.html',
                 controller: 'HomeCtrl'
             })
             .state('rank', {
                 url: '/rang',
                 templateUrl: 'templates/rank.html',
                 controller: 'RankCtrl'
-            })
-            .state('menu', {
-                url: '/menu',
-                templateUrl: 'templates/menu.html',
-                controller: 'MenuCtrl'
             })
             .state('play', {
                 url: '/play',
@@ -69,3 +64,5 @@ angular.module('sc', ['ui.router', 'sc.controllers','sc.services'])
             });
         $urlRouterProvider.otherwise('/home');
     });
+//gerer vertical center en fonction des taille d'ecran
+//gerer le top et left des icons interieures
