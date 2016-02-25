@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sc</title>
+
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body ng-app="sc" ng-controller="SCCtrl">
+
+
+    <div ui-view="" class="full-bg-img" style="z-index: 5">
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="page-footer animated fadeInUp white-text" style="padding-top: 0;z-index: 1" if="footer">
+
+        <!--Coprytights-->
+        <div class="footer-copyright text-center navbar-fixed-bottom">
+            <div class="container-fluid">
+                By <a href="{{wiicod_link}}"> {{wiicod_name}} </a>
+            </div>
+        </div>
+        <!--/.Coprytights-->
+    </footer>
+    <!-- Footer -->
+
+
+    <!-- SCRIPTS -->
+
+    <!-- Bower_component -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+    <!-- Material Design Bootstrap -->
+    <script type="text/javascript" src="js/mdb.js"></script>
+
+    <!-- App Script-->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/services.js"></script>
+
+    <!-- Personnal Js -->
+    <script type="text/javascript" src="js/sc.js"></script>
+
+
+</body>
+
+</html>

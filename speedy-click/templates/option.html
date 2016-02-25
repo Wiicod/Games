@@ -1,0 +1,28 @@
+<!-- Intro image -->
+<section class="half-bg-img" id="menu">
+    <button class="btn btn-danger" ui-sref="menu"><i class="fa fa-chevron-left"></i> Menu</button>
+</section>
+<!--/. Intro image -->
+
+<main>
+    <div class="container animated fadeInUp">
+        <div class="row">
+            <form class="col-lg-12" ng-submit="SaveOption(pseudo,email)">
+                <h5 class="border-bottom" translate="">Option</h5>
+                <div class="row">
+                    <div class="input-field col-lg-12">
+                        <input placeholder="" id="first_name" ng-model="pseudo" type="text" class="validate">
+                        <label for="first_name">Pseudo</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col-md-12">
+                        <input id="email" type="email" ng-model="email" class="validate">
+                        <label for="email" data-error="wrong" data-success="right">Email</label>
+                    </div>
+                </div>
+                <button class="btn btn-danger pull-right">Save</button>
+            </form>
+        </div>
+    </div>
+</main>

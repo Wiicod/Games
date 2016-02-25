@@ -1,0 +1,211 @@
+
+/*********************
+  Font
+**********************/
+@font-face {
+    font-family: "Perfect dark";
+    src:  url("../font/game-font/perfect_dark.ttf") format("truetype");
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "Astron";
+    src:  url("../font/game-font/astron%20boy.ttf") format("truetype");
+    font-weight: 200;
+}
+/*********************
+  VARIABLES
+**********************/
+/*********************
+  GENERAL
+**********************/
+html,
+body {
+  height: 100%;
+  font-family: "Perfect dark", Astron !important;
+  letter-spacing: 1.5px;
+}
+
+/*********************
+  NAVIGATION
+**********************/
+.navbar {
+  margin-bottom: 0;
+}
+
+.top-nav-collapse{
+    background: rgba(0,0,0,0.2);
+}
+
+.navbar-brand{
+    font-weight: 500;
+    font-size: 1.5em;
+}
+
+.nav-tabs{
+    border: none;
+}
+/* Small Devices, Tablets */
+
+
+/*********************
+  MAIN IMAGE
+**********************/
+section.full-bg-img {
+    background: black;
+    /*background: url("../img/menu-bg.jpg") no-repeat center center fixed;*/
+    /*background: url("http://mdbootstrap.com/images/reg-dark/reg%20(4).jpg") no-repeat center center fixed;  */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.half-bg-img {
+    height: 30%;
+    margin: 0;
+    padding: 0;
+}
+
+.half-bg-img .container, .half-bg-img .container-fluid {
+    height: 30%;
+}
+
+#jeu{
+    height: calc(100% - 50px);
+    z-index: 9999;
+}
+
+.container{
+    z-index: 6;
+}
+
+#menu{
+    background: black;
+    /*background: url("../img/menu-bg.jpg") no-repeat center center fixed;*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#menu h5>a{
+    color: inherit;
+}
+#menu .card-content{
+  padding: 2px;
+  text-align: center;
+}
+#menu .card-content h5{
+  font-size: 1.2em;
+  font-weight: bold;
+  border: none;
+  padding: 0;
+  margin: 8px;
+}
+
+.table tr:first-child td{
+    border: none;
+}
+
+.table td:last-child{
+    text-align: right;
+    color: #CC0000;
+}
+
+.paragraph{
+    font-family: Astron !important;
+    letter-spacing: 1.5px;
+}
+
+h5.border-bottom{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+span.rank-option{
+    margin: 10px;
+}
+
+span.rank-option.active{
+    color:#0d47a1;
+}
+
+footer.page-footer {
+    margin-top: -20px;
+}
+
+.card-content{
+
+}
+
+/*********************
+  TEMPLATE COLORS
+**********************/
+.pt-color {
+  background-color: #1C2331 !important;
+}
+
+.st-color {
+  background-color: #4D5668 !important;
+}
+
+.et-color {
+  background-color: #3F729B !important;
+}
+
+.btn-ptc {
+  background-color: #1C2331 !important;
+}
+
+.btn-ptc:hover {
+  background-color: #2f3a51 !important;
+}
+
+.btn-ptc:focus {
+  background-color: #2f3a51 !important;
+}
+
+.btn-stc {
+  background-color: #4D5668 !important;
+}
+
+.btn-stc:hover {
+  background-color: #636e85 !important;
+}
+
+.btn-stc:focus {
+  background-color: #636e85 !important;
+}
+
+.btn-etc {
+  background-color: #3F729B !important;
+}
+
+.btn-etc:hover {
+  background-color: #548cb9 !important;
+}
+
+.btn-etc:focus {
+  background-color: #548cb9 !important;
+}
+
+.fb-bg {
+  background-color: #3B5998;
+}
+
+.tw-bg {
+  background-color: #55ACEE;
+}
+
+.gplus-bg {
+  background-color: #DD4B39;
+}
+
+/*********************
+  FOOTER
+**********************/
+footer.page-footer {
+  margin-top: 0;
+  background-color: #1C2331;
+}
