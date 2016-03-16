@@ -3,7 +3,7 @@
         <div class="navbar-header verticalcenter">
             <div class="row text-center">
                 <div class="col-xs-3 col-md-3 col-sm-3 col-lg-3">
-                    <span class="time">00:14</span>
+                    <span class="time">00:0{{time}}</span>
                 </div>
                 <div class="col-xs-6 col-md-6 col-sm-6 col-lg-6">
                     <span class="score">{{score}}</span>
@@ -12,7 +12,7 @@
                     <div class="hexagon hexagon2-btn gallery-item">
                         <div class="hexagon-in1">
                             <div class="hexagon-in2">
-                                <div class="overlay" ui-sref="home">
+                                <div class="overlay" data-toggle="modal" data-target="#pauseModal" ng-click="StopChrono()">
                                     <a class="btn-floating btn-large">
                                         <i class="material-icons">pause</i>
                                     </a>
@@ -32,3 +32,22 @@
 
     </div>
 </section>
+
+
+<div class="modal fade"  id="pauseModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Score : {{score}}</p>
+                <p>
+                    <button type="button" class="btn btn-danger btn-gold" ui-sref="home"><i class="material-icons">exit_to_app</i></button>
+                    <button type="button" class="btn btn-danger btn-gold" data-dismiss="modal"><i class="material-icons">play_arrow</i></button>
+                    <button type="button" class="btn btn-danger btn-gold" ng-click="Restart()"><i class="material-icons">replay</i></button>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>

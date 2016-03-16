@@ -134,9 +134,23 @@ span.rank-option.active{
 footer.page-footer {
     margin-top: -20px;
 }
+.modal .modal-dialog{
+    width: 320px;
+}
 
-.card-content{
+.modal .btn i{
+    font-size: 1.5em;
+    line-height: 47px;
+    font-weight: bold;
+}
 
+.modal .modal-content{
+    background: rgba(0, 0, 0, 0);
+}
+
+.modal .modal-body p{
+    text-align: center;
+    color: #cc0000;
 }
 
 /*********************
@@ -152,6 +166,18 @@ footer.page-footer {
 
 .et-color {
   background-color: #3F729B !important;
+}
+
+.btn{
+    padding: 1px 11px;
+}
+
+.btn-gold{
+    background-color: #B69E40 !important;
+    color: #cc0000 !important;
+}
+.btn-gold:hover{
+    background-color: rgb(79,72,44)!important;
 }
 
 .btn-ptc {

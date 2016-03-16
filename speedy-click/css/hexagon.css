@@ -206,6 +206,10 @@ http://www.templatemo.com/preview/templatemo_400_polygon
 @media only screen
 and (min-device-width : 320px)
 and (max-width : 419px)	{
+    #pauseModal .modal-dialog{
+        margin: auto;
+        margin-top: 60%;
+    }
     .hexagon2-btn{
         top: -7px !important;
     }
@@ -257,6 +261,12 @@ and (max-width : 419px)	{
 
 @media (min-width : 420px)
 and (max-width : 559px)	{
+    #pauseModal .modal-dialog{
+        margin: auto;
+    }
+    #pauseModal .modal-content{
+        margin: 30% auto;
+    }
     #nav-jeu .container-fluid{
         padding-top: 0 !important;
     }
@@ -318,6 +328,12 @@ and (max-width : 559px)	{
 }
 
 @media(min-width:560px) and (max-width:767px)	{
+    #pauseModal .modal-dialog{
+        margin: auto;
+    }
+    #pauseModal .modal-content{
+        margin: 23% auto;
+    }
     #nav-jeu .container-fluid{
         padding-top: 0 !important;
     }
@@ -381,6 +397,9 @@ and (max-width : 559px)	{
 }
 
 @media(min-width:768px) and (max-width: 991px){
+    #pauseModal{
+        margin-top: 50%;
+    }
     #nav-jeu .container-fluid{
         padding-top: 0 !important;
     }
@@ -426,6 +445,9 @@ and (max-width : 559px)	{
 
 }
 @media(min-width:992px){
+    #pauseModal .modal-content{
+        margin: 50% auto;
+    }
     #nav-jeu .container-fluid{
         padding-top: 0 !important;
     }
@@ -478,16 +500,23 @@ and (max-width : 559px)	{
 }
 
 @media(min-width:1200px){
+    #pauseModal{
+        margin-top: 16%;
+    }
+    #nav-jeu.navbar-fixed-top{
+        padding: 0;
+    }
     #nav-jeu .container-fluid{
         padding-top: 0 !important;
     }
     #nav-jeu .navbar-header{
         font-size: 24px;
+        margin-top: 2%;
     }
     .hexagon2-btn{
         width: 60px;
         height: 84px;
-        top: -22px;
+        top: -8px;
     }
     #nav-jeu .gallery-item .overlay .btn-floating.btn-large i {
         line-height: 55.5px;
@@ -496,8 +525,8 @@ and (max-width : 559px)	{
         left: 35%;
     }
     #menu .gallery-item .overlay a{
-        top: 43%;
-        left: 44%;
+        top: 41%;
+        left: 40%;
     }
     #jeu, #menu{
         /*background: aqua;*/
