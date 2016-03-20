@@ -1,0 +1,3 @@
+Prise en main de la version ionic
+
+1 ionic platform add  android .

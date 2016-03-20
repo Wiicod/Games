@@ -1,28 +1,7 @@
 {
-  "name": "speedy-click",
-  "authors": [
-    "Zephyr08 <enanda52@gmail.com>","Evaris Fomekong <evarisfomekong@gmail.com>"
-  ],
-  "description": "See who will be the speed click master in time",
-  "main": "index.html",
-  "moduleType": [
-    "node"
-  ],
-  "keywords": [
-    "Sc"
-  ],
-  "license": "MIT",
-  "homepage": "www.wiicod.com",
-  "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "angular": "angularjs#~1.5.0",
-    "angular-ui-router": "ui-router#~0.2.18"
+  "name": "HelloIonic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.2.4"
   }
 }
