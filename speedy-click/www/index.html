@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+<html lang="en">
 
-    <!--<link href="lib/ionic/css/ionic.css" rel="stylesheet">-->
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/material.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sc</title>
+
+    <!-- Material Design Icons -->
+    <link href="fonts/materialIcons/material-icons.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -23,16 +23,38 @@
     <link href="css/style.css" rel="stylesheet">
     <link href="css/hexagon.css" rel="stylesheet">
 
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    <link href="css/ionic.app.css" rel="stylesheet">
-    -->
+</head>
 
-    <!-- ionic/angularjs js -->
-    <script src="lib/ionic/js/ionic.bundle.js"></script>
+<body ng-app="sc" ng-controller="SCCtrl">
 
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
 
+    <div ui-view="" class="full-bg-img" style="z-index: 5">
+
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="page-footer animated fadeInUp white-text" style="padding-top: 0;z-index: 1" if="footer">
+
+        <!--Coprytights-->
+        <div class="footer-copyright text-center navbar-fixed-bottom">
+            <div class="container-fluid" style="margin: 0 auto">
+                <hr class="divider-short" style="margin-bottom: 2px;margin-top: 2px;">
+                By <a href="{{wiicod_link}}"> {{wiicod_name}} </a>
+            </div>
+        </div>
+        <!--/.Coprytights-->
+    </footer>
+    <!-- Footer -->
+
+
+    <!-- SCRIPTS -->
+
+    <!-- Bower_component -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
 
     <!-- JQuery -->
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -51,23 +73,7 @@
     <!-- Personnal Js -->
     <script type="text/javascript" src="js/sc.js"></script>
 
-  </head>
-  <body ng-app="sc" ng-controller="SCCtrl">
 
-  <div ui-view="" class="full-bg-img" style="z-index: 5">
+</body>
 
-  </div>
-
-  <footer class="page-footer animated fadeInUp white-text" style="padding-top: 0;z-index: 1" if="footer">
-
-      <!--Coprytights-->
-      <div class="footer-copyright text-center navbar-fixed-bottom">
-        <div class="container-fluid" style="margin: 0 auto">
-          <hr class="divider-short" style="margin-bottom: 2px;margin-top: 2px;">
-          By <a href="{{wiicod_link}}"> {{wiicod_name}} </a>
-        </div>
-      </div>
-      <!--/.Coprytights-->
-    </footer>
-  </body>
 </html>

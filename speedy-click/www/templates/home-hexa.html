@@ -15,10 +15,10 @@
             <div class="row templatemorow">
                 <div class="hex col-sm-6" style="text-align: center">
                     <div>
-                        <div class="hexagon hexagon2 gallery-item">
+                        <div class="hexagon hexagon2 gallery-item" ui-sref="stats">
                             <div class="hexagon-in1">
                                 <div class="hexagon-in2">
-                                    <div class="overlay" ui-sref="stats">
+                                    <div class="overlay">
                                         <a class="btn-floating btn-large">
                                             <i class="material-icons">assessment</i>
                                         </a>
@@ -49,7 +49,7 @@
                         <div class="hexagon hexagon2 gallery-item">
                             <div class="hexagon-in1">
                                 <div class="hexagon-in2">
-                                    <div class="overlay" ui-sref="play">
+                                    <div class="overlay" data-toggle="modal" data-target="#playModal">
                                         <a class="btn-floating btn-large">
                                             <i class="material-icons">touch_app</i>
                                         </a>
@@ -94,3 +94,19 @@
     </div>
 </section>
 <!--/. Intro image -->
+<div class="modal fade"  id="playModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>Mode</p>
+                <p>
+                    <button type="button" class="btn btn-danger btn-gold" ui-sref="play-classic" style="min-width: 110px">Classic</button>
+                    <button type="button" class="btn btn-danger btn-gold" ui-sref="play-zen" style="min-width: 110px">Zen</button>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>

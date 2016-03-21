@@ -80,6 +80,7 @@ angular.module('sc.controllers', [])
             $scope.score="0 hit";
             $scope.time=10;
             $scope.StartChrono();
+            state=true;
         }
 
         $scope.StartChrono();

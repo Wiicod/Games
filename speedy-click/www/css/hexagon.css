@@ -206,7 +206,7 @@ http://www.templatemo.com/preview/templatemo_400_polygon
 @media only screen
 and (min-device-width : 320px)
 and (max-width : 419px)	{
-    #pauseModal .modal-dialog{
+    #pauseModal .modal-dialog, #playModal .modal-dialog{
         margin: auto;
         margin-top: 60%;
     }
@@ -261,7 +261,7 @@ and (max-width : 419px)	{
 
 @media (min-width : 420px)
 and (max-width : 559px)	{
-    #pauseModal .modal-dialog{
+    #pauseModal .modal-dialog, #playModal .modal-dialog{
         margin: auto;
     }
     #pauseModal .modal-content{
@@ -328,7 +328,7 @@ and (max-width : 559px)	{
 }
 
 @media(min-width:560px) and (max-width:767px)	{
-    #pauseModal .modal-dialog{
+    #pauseModal .modal-dialog, #playModal .modal-dialog{
         margin: auto;
     }
     #pauseModal .modal-content{
