@@ -1,17 +1,18 @@
+/* Empty. Add your own CSS if you like */
 
 /*********************
   Font
 **********************/
 @font-face {
-    font-family: "Perfect dark";
-    src:  url("../fonts/game-font/perfect_dark.ttf") format("truetype");
-    font-weight: 200;
+  font-family: "Perfect dark";
+  src:  url("../fonts/game-font/perfect_dark.ttf") format("truetype");
+  font-weight: 200;
 }
 
 @font-face {
-    font-family: "Astron";
-    src:  url("../fonts/game-font/astron%20boy.ttf") format("truetype");
-    font-weight: 200;
+  font-family: "Astron";
+  src:  url("../fonts/game-font/astron%20boy.ttf") format("truetype");
+  font-weight: 200;
 }
 /*********************
   VARIABLES
@@ -20,12 +21,17 @@
   GENERAL
 **********************/
 html,
-body {
+body{
   height: 100%;
   font-family: "Perfect dark", Astron !important;
   letter-spacing: 1.5px;
 }
-
+h1,h2,h3,h4,h5{
+  font-family: "Perfect dark", Astron !important;
+}
+ion-content, ion-view{
+  background: #000;
+}
 /*********************
   NAVIGATION
 **********************/
@@ -34,16 +40,16 @@ body {
 }
 
 .top-nav-collapse{
-    background: rgba(0,0,0,0.2);
+  background: rgba(0,0,0,0.2);
 }
 
 .navbar-brand{
-    font-weight: 500;
-    font-size: 1.5em;
+  font-weight: 500;
+  font-size: 1.5em;
 }
 
 .nav-tabs{
-    border: none;
+  border: none;
 }
 /* Small Devices, Tablets */
 
@@ -52,45 +58,45 @@ body {
   MAIN IMAGE
 **********************/
 section.full-bg-img {
-    background: black;
-    /*background: url("../img/menu-bg.jpg") no-repeat center center fixed;*/
-    /*background: url("http://mdbootstrap.com/images/reg-dark/reg%20(4).jpg") no-repeat center center fixed;  */
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  background: black;
+  /*background: url("../img/menu-bg.jpg") no-repeat center center fixed;*/
+  /*background: url("http://mdbootstrap.com/images/reg-dark/reg%20(4).jpg") no-repeat center center fixed;  */
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .half-bg-img {
-    height: 30%;
-    margin: 0;
-    padding: 0;
+  height: 30%;
+  margin: 0;
+  padding: 0;
 }
 
 .half-bg-img .container, .half-bg-img .container-fluid {
-    height: 30%;
+  height: 30%;
 }
 
 #jeu{
-    height: calc(100% - 50px);
-    z-index: 9999;
+  height: calc(100% - 50px);
+  z-index: 9999;
 }
 
 .container{
-    z-index: 6;
+  z-index: 6;
 }
 
 #menu{
-    background: black;
-    /*background: url("../img/menu-bg.jpg") no-repeat center center fixed;*/
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  background: black;
+  /*background: url("../img/menu-bg.jpg") no-repeat center center fixed;*/
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #menu h5>a{
-    color: inherit;
+  color: inherit;
 }
 #menu .card-content{
   padding: 2px;
@@ -105,52 +111,52 @@ section.full-bg-img {
 }
 
 .table tr:first-child td{
-    border: none;
+  border: none;
 }
 
 .table td:last-child{
-    text-align: right;
-    color: #CC0000;
+  text-align: right;
+  color: #CC0000;
 }
 
 .paragraph{
-    font-family: Astron !important;
-    letter-spacing: 1.5px;
+  font-family: Astron !important;
+  letter-spacing: 1.5px;
 }
 
 h5.border-bottom{
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
 }
 
 span.rank-option{
-    margin: 10px;
+  margin: 10px;
 }
 
 span.rank-option.active{
-    color:#0d47a1;
+  color:#0d47a1;
 }
 
 footer.page-footer {
-    margin-top: -20px;
+  margin-top: -20px;
 }
 .modal .modal-dialog{
-    width: 320px;
+  width: 320px;
 }
 
 .modal .btn i{
-    font-size: 1.5em;
-    line-height: 47px;
-    font-weight: bold;
+  font-size: 1.5em;
+  line-height: 47px;
+  font-weight: bold;
 }
 
 .modal .modal-content{
-    background: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0);
 }
 
 .modal .modal-body p{
-    text-align: center;
-    color: #cc0000;
+  text-align: center;
+  color: #cc0000;
 }
 
 /*********************
@@ -169,15 +175,25 @@ footer.page-footer {
 }
 
 .btn{
-    padding: 1px 11px;
+  padding: 1px 11px;
 }
 
+.btn-gold-text{
+  background: transparent;
+  /*color: #B69E40;*/
+  color: #fff;
+}
+.btn-gold-text:hover{
+  background: #B69E40;
+  color: #cc0000;
+}
 .btn-gold{
-    background-color: #B69E40 !important;
-    color: #cc0000 !important;
+  background-color: #B69E40 !important;
+  color: #cc0000 !important;
+  font-family: "Perfect dark" !important;
 }
 .btn-gold:hover{
-    background-color: rgb(79,72,44)!important;
+  background-color: rgb(79,72,44)!important;
 }
 
 .btn-ptc {
@@ -239,42 +255,166 @@ footer.page-footer {
 /**** Ripple effect ****/
 
 .fab{
-    border-radius: 50%;
-    margin:0;
-    padding: 20px;
+  border-radius: 50%;
+  margin:0;
+  padding: 20px;
 }
 
 .material{
-    position:relative;
-    color:white;
-    margin: 20px auto;
-    height:400px;
-    width:500px;
-    background:#f45673;
+  position:relative;
+  color:white;
+  margin: 20px auto;
+  height:400px;
+  width:500px;
+  background:#f45673;
 
 }
 
 .ripple{
-    overflow:hidden;
+  overflow:hidden;
 }
 
 .ripple-effect{
-    position: absolute;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    background: RGBA(204, 0, 0, 0.44);
-    animation: ripple-animation 0.1s;
+  position: absolute;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background: RGBA(204, 0, 0, 0.44);
+  animation: ripple-animation 0.1s;
 }
 
 
 @keyframes ripple-animation {
-    from {
-        transform: scale(1);
-        opacity: 0.4;
-    }
-    to {
-        transform: scale(100);
-        opacity: 0;
-    }
+  from {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(100);
+    opacity: 0;
+  }
+}
+
+.divider-short {
+  max-width: 50px;
+  border-color: #CC0000;
+  border-width: 3px;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
+.verticalcenter {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.bar.bar-sc {
+  border-color: #CC0000;
+  background-color: #CC0000;
+  background-image: linear-gradient(0deg, #e42112, #e42112 50%, transparent 50%);
+  color: #fff;
+}
+.bar.bar-sc .title {
+  color: #fff;
+}
+.bar.bar-sc.bar-footer {
+  background-image: linear-gradient(180deg, #e42112, #e42112 50%, transparent 50%);
+}
+
+.title-game{
+  font-size: 1.64rem;
+  line-height: 110%;
+  margin: 0.82rem 0 0.656rem 0
+}
+
+.full-bg-img {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.full-bg-img .container, .full-bg-img .container-fluid {
+  height: 100%;
+}
+
+.btn-floating {
+  display: inline-block;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  width: 37px;
+  height: 37px;
+  line-height: 37px;
+  padding: 0;
+  background-color: #aa66cc;
+  border-radius: 50%;
+  transition: .3s;
+  cursor: pointer;
+  vertical-align: middle;
+  margin: 10px;
+}
+
+.btn-floating i {
+  width: inherit;
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 37px;
+}
+
+.btn-floating:before {
+  border-radius: 0;
+}
+
+.btn-floating.btn-large {
+  width: 55.5px;
+  height: 55.5px;
+}
+
+.btn-floating.btn-large i {
+  line-height: 55.5px;
+}
+
+.btn-floating.btn-small {
+  height: 47px;
+  width: 47px;
+  line-height: 0;
+}
+
+.btn-floating.btn-small .fa, .btn-floating.btn-small .material-icons {
+  font-size: 18px;
+  margin-top: 7px;
+}
+
+button.btn-floating {
+  border: none;
+}
+
+.bar-footer{
+  background: black;
+  color: rgba(255,255,255,0.8);
+}
+.bar-footer a{
+  color: white;
+  text-decoration: none;
+}
+
+.popup-head{
+  border: none;}
+.popup-title{
+  color: #fff !important;
+}
+.popup-container .popup{
+  width: 270px;
+  background: rgba(0,0,0,0.1);
 }

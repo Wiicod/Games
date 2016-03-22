@@ -1,73 +1,64 @@
-/**
- * Created by Thedward on 21/02/2016.
- */
+// Ionic Starter App
 
-angular.module('sc', ['ui.router', 'sc.controllers','sc.services'])
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+angular.module('sc', ['ionic','sc.controllers'])
 
-    .run(['$rootScope','NavbarFactory',
-        function($rootScope,NavbarFactory){
-            /* Translate *
-            gettextCatalog.currentLanguage=navigator.language;
-            gettextCatalog.debug=true;
+.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    if(window.cordova && window.cordova.plugins.Keyboard) {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
 
-            /* End Translate */
-            /* ceci est le main de l'application */
-            $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){
+      // Don't remove this line unless you know what you are doing. It stops the viewport
+      // from snapping when text inputs are focused. Ionic handles this internally for
+      // a much nicer keyboard experience.
+      cordova.plugins.Keyboard.disableScroll(true);
+    }
+    if(window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
+})
 
-                /*/ mise a jour du title de la page de maniere automatique
-                $rootScope.title=toState.title;
-                $rootScope.currentUser={};
-                $rootScope.currentUser.roles = [{name:'Admin'},{name:'UserManager '},{name:"User"}];
-
-                AuthorizationFactory.hasAuthorization(toState.access).then(
-                    function(data){
-                        console.info('authorize');
-                    },function(msg){
-                        console.error(msg);
-                        $state.transitionTo('login');
-                    }
-                );*/
-            });
-        }])
-
-    .config(function($stateProvider, $urlRouterProvider) {
-        $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl: 'templates/home-hexa.html',
-                controller: 'HomeCtrl'
-            })
-            .state('rank', {
-                url: '/rang',
-                templateUrl: 'templates/rank.html',
-                controller: 'RankCtrl'
-            })
-            .state('play-zen', {
-                url: '/play-zen',
-                templateUrl: 'templates/play-zen.html',
-                controller: 'PlayZenCtrl'
-            })
-            .state('play-classic', {
-                url: '/play-classic',
-                templateUrl: 'templates/play-classic.html',
-                controller: 'PlayClassicCtrl'
-            })
-            .state('help', {
-                url: '/help',
-                templateUrl: 'templates/help.html',
-                controller: 'HelpCtrl'
-            })
-            .state('option', {
-                url: '/option',
-                templateUrl: 'templates/option.html',
-                controller: 'OptionCtrl'
-            })
-            .state('stats', {
-                url: '/stats',
-                templateUrl: 'templates/stats.html',
-                controller: 'StatsCtrl'
-            });
-        $urlRouterProvider.otherwise('/home');
-    });
-//gerer vertical center en fonction des taille d'ecran
-//gerer le top et left des icons interieures
+  .config(function($stateProvider, $urlRouterProvider) {
+    $stateProvider
+      .state('home', {
+        url: '/home',
+        templateUrl: 'templates/home-hexa.html',
+        controller: 'HomeCtrl'
+      })
+      .state('rank', {
+        url: '/rang',
+        templateUrl: 'templates/rank.html',
+        controller: 'RankCtrl'
+      })
+      .state('play-zen', {
+        url: '/play-zen',
+        templateUrl: 'templates/play-zen.html',
+        controller: 'PlayZenCtrl'
+      })
+      .state('play-classic', {
+        url: '/play-classic',
+        templateUrl: 'templates/play-classic.html',
+        controller: 'PlayClassicCtrl'
+      })
+      .state('help', {
+        url: '/help',
+        templateUrl: 'templates/help.html',
+        controller: 'HelpCtrl'
+      })
+      .state('option', {
+        url: '/option',
+        templateUrl: 'templates/option.html',
+        controller: 'OptionCtrl'
+      })
+      .state('stats', {
+        url: '/stats',
+        templateUrl: 'templates/stats.html',
+        controller: 'StatsCtrl'
+      });
+    $urlRouterProvider.otherwise('/home');
+  });

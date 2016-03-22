@@ -1,68 +1,38 @@
-///**
-// * Created by Thedward on 21/02/2016.
-// */
-//$(window).bind('orientationchange resize', function(event){
-//    if (event.orientation) {
-//        if (event.orientation == 'landscape') {
-//            if (window.rotation == 90) {
-//                alert("Rota");
-//                rotate(this, -90);
-//            } else {
-//                alert("ed");
-//                rotate(this, 90);
-//            }
-//        }
-//    }
-//});
-//
-//function rotate(el, degs) {
-//    iedegs = degs/90;
-//    if (iedegs < 0) iedegs += 4;
-//    transform = 'rotate('+degs+'deg)';
-//    iefilter = 'progid:DXImageTransform.Microsoft.BasicImage(rotation='+iedegs+')';
-//    styles = {
-//        transform: transform,
-//        '-webkit-transform': transform,
-//        '-moz-transform': transform,
-//        '-o-transform': transform,
-//        filter: iefilter,
-//        '-ms-filter': iefilter
-//    };
-//    $(el).css(styles);
-//}
-(function (window, $) {
+/**
+ * Created by Thedward on 22/03/2016.
+ */
+function getWindowHeight() {
+  var windowHeight=0;
+  if (typeof(window.innerHeight)=='number') {
+    windowHeight=window.innerHeight;
+  } else {
+    if (document.documentElement&& document.documentElement.clientHeight) {
+      windowHeight = document.documentElement.clientHeight;
+    } else {
+      if (document.body&&document.body.clientHeight) {
+        windowHeight=document.body.clientHeight;
+      }
+    }
+  }
+  return windowHeight;
+}
+function getWindowWidth() {
+  var windowWidth=0;
+  if (typeof(window.innerWidth)=='number') {
+    windowWidth=window.innerWidth;
+  } else {
+    if (document.documentElement&& document.documentElement.clientWidth) {
+      windowWidth = document.documentElement.clientWidth;
+    } else {
+      if (document.body&&document.body.clientWidth) {
+        windowWidth=document.body.clientWidth;
+      }
+    }
+  }
+  return windowWidth;
+}
 
-    $(function() {
-
-
-        $('.ripple').on('click', function (event) {
-            event.preventDefault();
-
-            var $div = $('<div/>'),
-                btnOffset = $(this).offset(),
-                xPos = event.pageX - btnOffset.left,
-                yPos = event.pageY - btnOffset.top;
+ny=getWindowHeight();
+nx=getWindowWidth();
 
 
-
-            $div.addClass('ripple-effect');
-            var $ripple = $(".ripple-effect");
-
-            $ripple.css("height", $(this).height());
-            $ripple.css("width", $(this).height());
-            $div
-                .css({
-                    top: yPos - ($ripple.height()/2),
-                    left: xPos - ($ripple.width()/2),
-                    background: $(this).data("ripple-color")
-                })
-                .appendTo($(this));
-
-            window.setTimeout(function(){
-                $div.remove();
-            }, 2000);
-        });
-
-    });
-
-})(window, jQuery);

@@ -140,7 +140,7 @@ http://www.templatemo.com/preview/templatemo_400_polygon
     line-height: 32px;
     position: absolute;
     top: 37%;
-    left: 39%;
+    left: 40%;
     margin-top: -16px;
     margin-left: -16px;
 }
@@ -160,7 +160,7 @@ http://www.templatemo.com/preview/templatemo_400_polygon
 }
 
 .gallery-item .overlay .btn-floating.btn-large i {
-    line-height: 66.5px;
+    line-height: 72.5px;
     font-size: 50px;
     color: #CC0000;
 }
@@ -198,7 +198,7 @@ http://www.templatemo.com/preview/templatemo_400_polygon
     color: #CC0000;
 }
 
-#menu .info{
+#home .info{
     display: none;
 }
 
@@ -217,12 +217,16 @@ and (max-width : 419px)	{
         line-height: 47.5px;
         font-size: 40px;
     }
-    #jeu, #menu{
+    #jeu, #home, ion-content{
         /*background: red;*/
     }
 
+    #home .containers{
+      margin-top: 15% !important;
+    }
+
     .hex	{ width: 50%; float: left; }
-    .templatemorow	{ margin: 0 2%; }
+    .templatemorow	{ margin: 0 2%;margin-left: 4.7%; }
     .hexagon2
     {
         position: absolute;
@@ -245,7 +249,7 @@ and (max-width : 419px)	{
 
     .templatemo-hex-top1	{ margin-top: 300px; }
     .templatemo-hex-top2	{ margin-top: 100px; margin-left: 25%; }
-    .templatemo-hex-top3	{ margin-top: 100px; }
+    .templatemo-hex-top3	{ margin-top: 29%; }
     .templatemo_gallerytop	{ margin-top: 32%; }
     .templatemo_loadmore	{ margin-top: 53%; }
     .templatemo_servicetxt	{ margin-top: 230px; }
@@ -278,37 +282,39 @@ and (max-width : 559px)	{
         font-size: 40px;
     }
 
-    #jeu, #menu{
+    #jeu, #home, ion-content{
         /*background: pink;*/
     }
-    #menu .verticalcenter{
-        top: 30% !important;
+    #home .containers{
+      margin-top: 30% !important;
     }
-    #menu .hex{
+
+    #home .hex{
         width: 18%;
     }
-    #menu .hexagon2{
+    #home .hexagon2{
         width: 75px;
         height: 102px;
     }
-    #menu .gallery-item .overlay a{
-        top:39%;
+    #home .gallery-item .overlay a{
+      top: 39%;
+      left: 41%;
     }
-    #menu .templatemo-hex-top2, #menu .templatemo-hex-top3{
+    #home .templatemo-hex-top2, #home .templatemo-hex-top3{
         margin-top: 0px;
         margin-left: 0px;
     }
-    #menu .gallery-item .overlay .btn-floating.btn-large{
+    #home .gallery-item .overlay .btn-floating.btn-large{
         width: 46.5px;
         height: 53.5px;
     }
-    #menu .gallery-item .overlay .btn-floating.btn-large i {
-        line-height: 51.5px;
+    #home .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 58.5px;
         font-size: 40px;
     }
 
     .hex	{ width: 50%; float: left; }
-    .templatemorow	{ margin: 0; }
+    .templatemorow	{ margin: 0;    margin-left: 4% !important;}
     .hexagon2
     {
         position: absolute;
@@ -347,37 +353,38 @@ and (max-width : 559px)	{
     #nav-jeu .navbar-header{
         font-size: 20px;
     }
-    #jeu, #menu{
+    #jeu, #home, ion-content{
         /*background: green;*/
     }
-    #menu .verticalcenter{
-        top: 35% !important;
+    #home .containers{
+      margin-top: 15% !important;
     }
-    #menu .hex{
+
+    #home .hex{
         width: 20%;
     }
-    #menu .hexagon2{
+    #home .hexagon2{
         width: 80px;
         height: 116px;
     }
-    #menu .gallery-item .overlay a{
+    #home .gallery-item .overlay a{
         top:38%;
-        left: 35%;
+        left: 37%;
     }
-    #menu .templatemo-hex-top2, #menu .templatemo-hex-top3{
+    #home .templatemo-hex-top2, #home .templatemo-hex-top3{
         margin-top: 0px;
         margin-left: 0px;
     }
-    #menu .gallery-item .overlay .btn-floating.btn-large{
+    #home .gallery-item .overlay .btn-floating.btn-large{
         width: 53.5px;
         height: 60.5px;
     }
-    #menu .gallery-item .overlay .btn-floating.btn-large i {
-        line-height: 60.5px;
+    #home .gallery-item .overlay .btn-floating.btn-large i {
+        line-height: 65.5px;
         font-size: 40px;
     }
     .hex	{ width: 50%; float: left; }
-    .templatemorow	{ margin: 0 10%; }
+    .templatemorow	{ margin: 0 1.5%; }
     .hexagon2
     {
         position: absolute;
@@ -417,14 +424,17 @@ and (max-width : 559px)	{
     #nav-jeu .gallery-item .overlay a{
         left: 35%;
     }
-    #menu .gallery-item .overlay a{
+    #home .gallery-item .overlay a{
         top: 40%;
         left: 41%;
     }
-    #jeu, #menu{
+    #jeu, #home, ion-content{
         /*background: purple;*/
     }
-    .templatemorow	{ margin: 0 4%; }
+    #home .containers{
+      margin-top: 55% !important;
+    }
+    .templatemorow	{ margin: 0; }
     .hexagon2
     {
         position: absolute;
@@ -465,29 +475,32 @@ and (max-width : 559px)	{
     #nav-jeu .gallery-item .overlay a{
         left: 35%;
     }
-    #jeu, #menu{
+    #jeu, #home, ion-content{
         /*background: grey;*/
     }
-    #menu .verticalcenter{
+    #home .containers{
+      margin-top: 25% !important;
+    }
+    #home .verticalcenter{
         top: 42% !important;
     }
-    #menu .gallery-item .overlay a{
+    #home .gallery-item .overlay a{
         top: 39%;
         left: 38%;
     }
-    #menu .templatemo-hex-top2, #menu .templatemo-hex-top3{
+    #home .templatemo-hex-top2, #home .templatemo-hex-top3{
         margin-top: 0px;
         margin-left: 0px;
     }
-    #menu .gallery-item .overlay .btn-floating.btn-large{
+    #home .gallery-item .overlay .btn-floating.btn-large{
         width: 70.5px;
         height: 84.5px;
     }
-    #menu .gallery-item .overlay .btn-floating.btn-large i {
+    #home .gallery-item .overlay .btn-floating.btn-large i {
         line-height: 84.5px;
         font-size: 60px;
     }
-    .templatemorow	{ margin: 0 7%; }
+    .templatemorow	{ margin: 0 1%; }
     .hexagon2
     {
         position: absolute;
@@ -524,12 +537,15 @@ and (max-width : 559px)	{
     #nav-jeu .gallery-item .overlay a{
         left: 35%;
     }
-    #menu .gallery-item .overlay a{
+    #home .gallery-item .overlay a{
         top: 41%;
         left: 40%;
     }
-    #jeu, #menu{
+    #jeu, #home, ion-content{
         /*background: aqua;*/
+    }
+    #home .containers{
+      margin-top: 15% !important;
     }
     .templatemorow	{ margin: 0px 30px; }
     .hexagon2 {
