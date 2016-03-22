@@ -30,10 +30,10 @@ angular.module('sc', ['ionic','sc.controllers'])
         templateUrl: 'templates/home-hexa.html',
         controller: 'HomeCtrl'
       })
-      .state('rank', {
-        url: '/rang',
-        templateUrl: 'templates/rank.html',
-        controller: 'RankCtrl'
+      .state('multi', {
+        url: '/multi',
+        templateUrl: 'templates/multi.html',
+        controller: 'MultiCtrl'
       })
       .state('play-zen', {
         url: '/play-zen',

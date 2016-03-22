@@ -26,9 +26,13 @@ body{
   font-family: "Perfect dark", Astron !important;
   letter-spacing: 1.5px;
 }
-h1,h2,h3,h4,h5{
+i{
+  cursor: pointer;
+}
+h1,h2,h3,h4,h5,button{
   font-family: "Perfect dark", Astron !important;
 }
+
 ion-content, ion-view{
   background: #000;
 }
@@ -181,7 +185,9 @@ footer.page-footer {
 .btn-gold-text{
   background: transparent;
   /*color: #B69E40;*/
-  color: #fff;
+  color: #fff !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
 }
 .btn-gold-text:hover{
   background: #B69E40;
@@ -416,5 +422,69 @@ button.btn-floating {
 }
 .popup-container .popup{
   width: 270px;
-  background: rgba(0,0,0,0.1);
+  background: rgba(0,0,0,0.6);
+}
+
+.hero {
+  background-size: cover;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+  color: #fff;
+  height: 200px;
+  position: relative;
+  text-align: center;
+  -webkit-transition: all 1s cubic-bezier(.55,0,.1,1);
+  transition: all 1s cubic-bezier(.55,0,.1,1);
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
+  width: 100%;
+}
+
+.hero h3{
+  margin-top: 0px !important;
+}
+.hero > .content {
+  bottom: 0;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 1;
+}
+.hero > .content > .avatar {
+  background-position: center;
+  background-size: cover;
+  border: solid 1px rgba(255,255,255,.8);
+  border-radius: 50%;
+  display: inline-block;
+  height: 88px;
+  left: auto;
+  margin-bottom: 10px;
+  position: relative;
+  width: 88px;
+}
+.avatar, .item-avatar .avatar {
+  background-position: center;
+  background-size: cover;
+  border-radius: 50%;
+  display: inline-block;
+  height: 56px;
+  left: 16px;
+  position: absolute;
+  width: 56px;
+}
+
+.card{
+  margin-bottom: 40px;
+}
+.item{
+  color:#000;
+}
+.score{
+  float: right;
+  color: #cc0000;
+}
+
+.rotate{
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
 }

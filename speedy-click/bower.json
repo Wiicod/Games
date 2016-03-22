@@ -5,7 +5,5 @@
     "ionic": "driftyco/ionic-bower#1.2.4"
   },
   "dependencies": {
-    "angular-ui-router": "ui-router#~0.2.18",
-    "angular": "angularjs#~1.5.2"
   }
 }
