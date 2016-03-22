@@ -233,7 +233,7 @@ angular.module('sc.controllers', [])
 
     }])
     .controller('PlayClassicCtrl',  ['$scope','$ionicPopup','$location','$interval',function($scope,$ionicPopup,$location,$interval) {
-        $scope.popupGamePause  = function() {
+        $scope.popupGamePause  = function(etat) {
           $scope.StopChrono();
 
           var confirmPopup = $ionicPopup.alert({
@@ -251,7 +251,9 @@ angular.module('sc.controllers', [])
                 text: '<button class="button" ui-sref="play-zen"><i class="icon ion-play"></i> </button>',
                 type: ' btn-gold',
                 onTap: function(e) {
-                  $scope.StartChrono();
+                  if(!etat){
+                    $scope.StartChrono();
+                  }
                 }
               },
               {
@@ -303,6 +305,7 @@ angular.module('sc.controllers', [])
                 }
                 else{
                     state=false;
+                    $scope.popupGamePause(true);
                     $scope.StopChrono();
                 }
 
