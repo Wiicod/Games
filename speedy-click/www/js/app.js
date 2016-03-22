@@ -45,12 +45,12 @@ angular.module('sc', ['ui.router', 'sc.controllers','sc.services'])
             .state('play-zen', {
                 url: '/play-zen',
                 templateUrl: 'templates/play-zen.html',
-                controller: 'PlayCtrl'
+                controller: 'PlayZenCtrl'
             })
             .state('play-classic', {
                 url: '/play-classic',
                 templateUrl: 'templates/play-classic.html',
-                controller: 'PlayCtrl'
+                controller: 'PlayClassicCtrl'
             })
             .state('help', {
                 url: '/help',

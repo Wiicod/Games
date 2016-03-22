@@ -5,7 +5,7 @@ angular.module('sc.controllers', [])
         $scope.wiicod_link="http://www.wiicod.com";
 
         $scope.error_mesage_pseudo="Pseudo all ready use, take an other";
-        
+
     }])
 
     .controller('StatsCtrl', ['$scope',function($scope,NavbarFactory){
@@ -20,14 +20,45 @@ angular.module('sc.controllers', [])
     }])
 
     .controller('HelpCtrl', ['$scope',function($scope,NavbarFactory) {
-       
+
     }])
 
     .controller('RankCtrl',  ['$scope',function($scope,NavbarFactory) {
-        
+
     }])
 
-    .controller('PlayCtrl',  ['$scope','$interval',function($scope,$interval) {
+    .controller('PlayZenCtrl',  ['$scope','$interval',function($scope,$interval) {
+        $('.modal-backdrop').css({'display':'none'});
+
+        $scope.time=10;
+        var state=true;
+
+        $scope.hit=0;
+        $scope.score=$scope.hit+" hit";
+        $scope.Click=function(){
+            if(state){
+                $scope.StartChrono();
+                $scope.hit+=10;
+                $scope.score=$scope.hit+" hits";
+            }
+        }
+
+        $('#pauseModal').click(function(){
+        })
+
+
+
+        $scope.Restart=function(){
+            $('.modal-backdrop').css({'display':'none'});
+            $('#pauseModal').css({'display':'none'});
+            $scope.hit=0
+            $scope.score="0 hit";
+            state=true;
+        }
+
+        $scope.StartChrono();
+    }])
+    .controller('PlayCLassicCtrl',  ['$scope','$interval',function($scope,$interval) {
         $('.modal-backdrop').css({'display':'none'});
 
         $scope.time=10;
@@ -45,7 +76,7 @@ angular.module('sc.controllers', [])
         }
 
         $('#pauseModal').click(function(){
-            console.log("q");
+            //console.log("q");
         })
 
         // Gestion du chrono
