@@ -68,7 +68,7 @@ angular.module('sc.controllers', [])
       $(".play-zone").css('height',(ny-95-43)/2+"px");
       $("#play-zone2").css("margin-top","43px");
 
-      var time=1;
+      var time=10;
       $scope.time="10s";
       var chrono;
       var state=true;
