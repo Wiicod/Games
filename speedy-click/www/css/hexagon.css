@@ -7,7 +7,7 @@ http://www.templatemo.com/preview/templatemo_400_polygon
 /* Menu */
 
 
-.templatemorow	{ margin: 0px 30px; }
+.templatemorow	{ margin: 0px 30px;display: block !important; }
 .templatemo_servicerow	{ margin: 0px; }
 .blok	{ position: absolute; }
 .hex	{ width: 20%; float: left; }

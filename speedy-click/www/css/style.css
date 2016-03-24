@@ -488,3 +488,54 @@ button.btn-floating {
   -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
   transform: rotate(180deg);
 }
+
+
+.bonus{
+  border-radius: 50%;
+  padding: 15px;
+  background: #cc0000;
+  color: white;
+  position: absolute;
+  top: -100px;
+  left: -100px;
+}
+
+.bonus.gold{
+  background: #B69E40;
+}
+.bonus.white{
+  background: #fff;
+  color: #cc0000;
+}
+.bonus.red{
+  background: #cc0000;
+}
+
+.hide{
+  display: none !important;
+}
+
+#jeu h2.title span{
+  color: #cc0000;
+}
+
+.ligne{
+  margin: -2px 0px 0px;
+  background: rgb(204, 0, 0) none repeat scroll 0% 0%;
+  color: white;
+  padding: 0px;
+}
+
+.ligne .toggle{
+  float: right;
+}
+
+.ligne .toggle .track, .toggle input:checked + .track{
+  background: #B69E40;
+  border-color: #B69E40;
+}
+
+span.option{
+  position: relative;
+  top: 5px;
+}
