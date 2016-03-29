@@ -15,7 +15,19 @@ angular.module('sc.controllers', [])
         ];
     }])
 
-    .controller('HomeCtrl', ['$scope','$ionicPopup','$location',function($scope,$ionicPopup,$location) {
+    .controller('HomeCtrl', ['$scope','$ionicPopup','$location','ScoreFactory','RankFactory',function($scope,$ionicPopup,$location,ScoreFactory,RankFactory) {
+
+
+      /*ScoreFactory.addScore({click:50,speed:90,type:1}).then(function(data){
+        ScoreFactory.getScores().then(function(scores){
+          alert(scores[0].click+"0000"+scores[0].click);
+          },function(msg){
+          alert("ok7");
+        })
+        },function(msg){
+        alert(msg);
+      });*/
+
         $('.modal-backdrop').css({'display':'none'});
         $(document).ready(function() {
           var x=(ny-95)/3;

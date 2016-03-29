@@ -3,9 +3,12 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('sc', ['ionic','sc.controllers'])
 
-.run(function($ionicPlatform) {
+
+var server="http://54.200.82.255/api/";
+angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
+
+.run(function($ionicPlatform,$ionicLoading,DBQuery,RankFactory,ScoreFactory) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -20,6 +23,46 @@ angular.module('sc', ['ionic','sc.controllers'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    if(window.cordova) {
+      DBQuery.init();
+      $ionicLoading.show({ template: 'Mise a jour en cour....<br><ion-spinner icon="android"></ion-spinner>' });
+      RankFactory.updateRanks().then(function(){
+        $ionicLoading.hide();
+        /*RankFactory.getRanks().then(function(data){
+          alert(data[0].username+"ooooo"+data[0].id);
+        },function(err){
+          alert("pas marcher");
+        });*/
+      },function(msg){
+        alert(msg);
+        $ionicLoading.hide();
+      });
+      ScoreFactory.updateScoreOnline();
+
+
+    }
+
+   /* if(window.cordova) {
+      $ionicLoading.show({ template: 'Chargement....<ion-spinner icon="android"></ion-spinner>' });
+      window.plugins.sqlDB.copy("speedy.db",0, function() {
+          DBQuery.init().then(function(dat){
+            $ionicLoading.hide();
+          },function(msg){
+            alert('erreur');
+          });
+
+      },
+        function(error) {
+          console.error("There was an error copying the database: " + error);
+          DBQuery.init().then(function(dat){
+            $ionicLoading.hide();
+          },function(msg){
+            alert('erreur');
+          });
+
+      });
+    }*/
   });
 })
 
