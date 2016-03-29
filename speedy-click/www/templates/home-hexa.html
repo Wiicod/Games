@@ -1,11 +1,10 @@
 <ion-view>
   <ion-content>
 
-
     <!-- Boutons de jeu -->
     <section class="full-bg-img" id="home">
       <div class="text-center">
-        <h5 class="title-game" style="color: #fff;">Speedy Click</h5>
+        <h5 class="title-game" style="color: #fff;"><span>S</span>peedy <span>C</span>lick</h5>
         <hr class="divider-short">
       </div>
 
@@ -15,10 +14,10 @@
           <div class="row templatemorow">
             <div class="hex col-sm-6" style="text-align: center">
               <div>
-                <div class="hexagon hexagon2 gallery-item" ui-sref="stats">
+                <div class="hexagon hexagon2 gallery-item">
                   <div class="hexagon-in1">
                     <div class="hexagon-in2">
-                      <div class="overlay">
+                      <div class="overlay" ui-sref="stats">
                         <a class="btn-floating btn-large">
                           <i class="icon ion-trophy"></i>
                         </a>
@@ -50,7 +49,7 @@
                     <div class="hexagon-in2">
                       <div class="overlay" ng-click="popupGameMode()">
                         <a class="btn-floating btn-large">
-                          <i class="icon ion-android-locate"></i>
+                          <i class="icon ion-play"></i>
                         </a>
                       </div>
                     </div>

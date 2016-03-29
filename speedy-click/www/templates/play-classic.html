@@ -3,9 +3,15 @@
     <button class="button button-clear btn-gold-text">{{time}}</button>
     <h1 class="title">{{score}}</h1>
     <button class="button btn-gold-text" ng-click="popupGamePause(false)"><i class="icon ion-pause"></i></button>
+    <!--<button class="button btn-gold-text" ng-click="setBonus()"><i class="icon ion-plus"></i></button>-->
   </ion-header-bar>
-  <ion-content id="jeu" ng-click="Click()">
-
+  <ion-content id="jeu" ng-click="Click($event)">
+    <div class="bonus" id="bonus1">
+      <i class="fa fa-star fa-2x"></i>
+    </div>
+    <div class="bonus" ng-click="Bonus()">
+      <i class="fa fa-gift fa-2x"></i>
+    </div>
   </ion-content>
 </ion-view>
 <!-- Intro image -->

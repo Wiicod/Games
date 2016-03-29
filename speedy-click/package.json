@@ -1,7 +1,7 @@
 {
-  "name": "speedy-click",
+  "name": "Speedy Click",
   "version": "1.1.1",
-  "description": "speedy-click: An Ionic project",
+  "description": "Speedy Click is a game whose aim is to be the fastest by clicking as much as possible during the time.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

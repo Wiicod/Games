@@ -1,13 +1,21 @@
 <ion-view>
-  <ion-content>
-    <div id="play-zone1" class="play-zone" ng-click="Click1()"></div>
+  <ion-content scroll="false">
+    <div id="play-zone1" class="play-zone" ng-click="Click1($event)">
+      <div class="bonus" id="bonus1">
+        <i class="fa fa-star fa-2x"></i>
+      </div>
+    </div>
     <div class="block">
       <div class="bar bar-headers bar-sc">
         <button class="button btn-gold-text rotate">{{hit1}}</button>
-        <h1 class="title text-center">{{time}} &nbsp; <i class="icon ion-pause" ng-click="popupGameEnd()"></i></h1>
+        <h1 class="title text-center">{{time}} &nbsp; <i class="icon ion-pause" ng-click="popupGameEnd(false)"></i></h1>
         <button class="button btn-gold-text">{{hit2}}</button>
       </div>
     </div>
-    <div id="play-zone2" class="play-zone" ng-click="Click2()"></div>
+    <div id="play-zone2" class="play-zone" ng-click="Click2($event)">
+      <div class="bonus" id="bonus2">
+        <i class="fa fa-star fa-2x"></i>
+      </div>
+    </div>
   </ion-content>
 </ion-view>

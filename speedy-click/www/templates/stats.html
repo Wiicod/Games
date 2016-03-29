@@ -1,8 +1,8 @@
 
-<ion-view view-title="Help">
+<ion-view view-title="Zen Statistic">
   <ion-content>
     <!-- Intro image -->
-    <div class="hero slide-up" style="background-image: url('img/profile-bg.jpg');">
+    <div class="hero slide-up" >
       <div class="content">
         <div class="avatar"><i class="icon ion-trophy"></i></div>
         <h3><a class="light">Score</a></h3>
@@ -11,9 +11,29 @@
     <!--/. Intro image -->
    <div class="card">
      <div class="list">
+       <div class="row ligne">
+         <div class="col col-50">
+           <span class="option">Zen</span>
+           <label class="toggle ">
+             <input type="checkbox">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+         </div>
+         <div class="col col-50">
+           <span class="option">Local</span>
+           <label class="toggle ">
+             <input type="checkbox">
+             <div class="track">
+               <div class="handle"></div>
+             </div>
+           </label>
+         </div>
+       </div>
 
        <div class="item" style="padding: 8px;" ng-repeat="n in [1,2,4,5,7,8,91,55,45,86,16,36]">
-         Zephyr
+         <span>Zephyr</span>
         <span class="score">
           1455
         </span>
