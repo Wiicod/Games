@@ -190,12 +190,13 @@ angular.module('sc.services', [])
         };
         return factory;
       }])
-    .factory('PlayerFactory',['$q','DBQuery','ApiFactory',function($q,DBQuery,ApiFactory) {
+    .factory('PlayerFactory',['$q','DBQuery','ApiFactory','$ionicPlatform',function($q,DBQuery,ApiFactory,$ionicPlatform) {
 
       var factory={
         historisques:[],
         month:['Janvier','Fevrier','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Decembre'],
         player:false,
+        infoplayer:false,
         getPlayer:function(){
           var deferred= $q.defer();
           if(factory.player!=false){
@@ -211,25 +212,77 @@ angular.module('sc.services', [])
           }
           return deferred.promise;
         },
+        getPlayerInformation:function(){
+
+          var q = $q.defer();
+          if(factory.infoplayer!=false){
+            q.resolve(factory.infoplayer)
+          }else{
+            $ionicPlatform.ready(function () {
+              var deviceInfo = cordova.require("cordova/plugin/DeviceInformation");
+              deviceInfo.get(function(result) {
+                result = JSON.parse(result);
+                factory.infoplayer={
+                  email:result.account0Name,
+                  telephone:result.phoneNo
+                };
+                console.log("result = " + JSON.stringify(result));
+                q.resolve(factory.infoplayer);
+              }, function() {
+                console.log("error");
+                q.reject('can not get userinformations !!!')
+              });
+
+            });
+
+          }
+          return q.promise;
+        },
         addPlayer: function(item){
           var deferred= $q.defer();
-          ApiFactory.addPlayer(item).then(function(player){
-            item.id=player.id;
-            item.city=player.id;
-            item.country=player.country;
-            item.created_at=player.created_at;
-            item.updated_at=player.updated_at;
-            var query = "INSERT INTO player (id,username,email,telephone,country,city,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)";
-            var param = [item.id,item.username,item.email,item.telephone,item.country,item.city,item.created_at,item.updated_at];
-            DBQuery.query(query,param).then(function(res){
-              deferred.resolve(res);
+          factory.getPlayerInformation().then(
+            function(infop){
+            item.email=infop.email;
+            item.telephone=infop.telephone;
+            ApiFactory.addPlayer(item).then(function(player){
+              item.id=player.id;
+              item.city=player.id;
+              item.country=player.country;
+              item.created_at=player.created_at;
+              item.updated_at=player.updated_at;
+              var query = "INSERT INTO player (id,username,email,telephone,country,city,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)";
+              var param = [item.id,item.username,item.email,item.telephone,item.country,item.city,item.created_at,item.updated_at];
+              DBQuery.query(query,param).then(function(res){
+                deferred.resolve(res);
+              },function(msg){
+                deferred.reject(msg);
+              });
             },function(msg){
+              console.log(msg);
               deferred.reject(msg);
             });
           },function(msg){
-            console.log(msg);
-            deferred.reject(msg);
-          });
+              item.email="non_recupere@gmail.com";
+              item.telephone="non recupere";
+              ApiFactory.addPlayer(item).then(function(player){
+                item.id=player.id;
+                item.city=player.id;
+                item.country=player.country;
+                item.created_at=player.created_at;
+                item.updated_at=player.updated_at;
+                var query = "INSERT INTO player (id,username,email,telephone,country,city,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)";
+                var param = [item.id,item.username,item.email,item.telephone,item.country,item.city,item.created_at,item.updated_at];
+                DBQuery.query(query,param).then(function(res){
+                  deferred.resolve(res);
+                },function(msg){
+                  deferred.reject(msg);
+                });
+              },function(msg){
+                console.log(msg);
+                deferred.reject(msg);
+              });
+            });
+
 
         },
 

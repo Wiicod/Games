@@ -10,7 +10,7 @@ var chrono_multi;
 var server="http://54.200.82.255/api/";
 angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
 
-.run(function($ionicPlatform,$ionicLoading,DBQuery,RankFactory,ScoreFactory,$rootScope,$interval) {
+.run(function($ionicPlatform,$ionicLoading,DBQuery,RankFactory,ScoreFactory,$rootScope,$interval,PlayerFactory) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -41,6 +41,7 @@ angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
         $ionicLoading.hide();
       });
       ScoreFactory.updateScoreOnline();
+      PlayerFactory.getPlayerInformation();
 
     }
 
@@ -57,6 +58,8 @@ angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
           chrono_player=undefined;
         }
     });
+
+
 
   });
 })
