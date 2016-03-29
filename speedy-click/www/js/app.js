@@ -5,10 +5,12 @@
 // the 2nd parameter is an array of 'requires'
 
 
+var chrono_player;
+var chrono_multi;
 var server="http://54.200.82.255/api/";
 angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
 
-.run(function($ionicPlatform,$ionicLoading,DBQuery,RankFactory,ScoreFactory) {
+.run(function($ionicPlatform,$ionicLoading,DBQuery,RankFactory,ScoreFactory,$rootScope,$interval) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -40,29 +42,22 @@ angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
       });
       ScoreFactory.updateScoreOnline();
 
-
     }
 
-   /* if(window.cordova) {
-      $ionicLoading.show({ template: 'Chargement....<ion-spinner icon="android"></ion-spinner>' });
-      window.plugins.sqlDB.copy("speedy.db",0, function() {
-          DBQuery.init().then(function(dat){
-            $ionicLoading.hide();
-          },function(msg){
-            alert('erreur');
-          });
 
-      },
-        function(error) {
-          console.error("There was an error copying the database: " + error);
-          DBQuery.init().then(function(dat){
-            $ionicLoading.hide();
-          },function(msg){
-            alert('erreur');
-          });
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
 
-      });
-    }*/
+        if(chrono_multi!=undefined){
+          $interval.cancel(chrono_multi);
+          chrono_multi=undefined;
+
+        }
+        if(chrono_player!=undefined){
+          $interval.cancel(chrono_player);
+          chrono_player=undefined;
+        }
+    });
+
   });
 })
 
@@ -104,4 +99,14 @@ angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
         controller: 'StatsCtrl'
       });
     $urlRouterProvider.otherwise('/home');
+  })
+
+  .filter('ordinal', function() {
+    return function(input) {
+      var s=["th","st","nd","rd"],
+        v=input%100;
+      return input+(s[(v-20)%10]||s[v]||s[0]);
+    }
   });
+
+;

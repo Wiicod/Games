@@ -8,11 +8,55 @@ angular.module('sc.controllers', [])
 
     }])
 
-    .controller('StatsCtrl', ['$scope',function($scope){
-        $scope.score=[
-          {"rang":1,"nom":"Zephyr","point":4125},
-          {"rang":1,"nom":"Slim","point":125}
+    .controller('StatsCtrl', ['$scope','RankFactory','ScoreFactory',function($scope,RankFactory,ScoreFactory){
+
+      $scope.filtre={
+        area:"local",
+        type:"classic",
+        flag_area:true,
+        flag_type:true
+      };
+
+
+      $scope.$watch('filtre.flag_type',function(){
+        $scope.filtre.type=$scope.filtre.flag_type?"classic":"zen";
+      });
+      $scope.$watch('filtre.flag_area',function(){
+        $scope.filtre.area = $scope.filtre.flag_area?"local":"world";
+      });
+       //* Pour les test
+       $scope.scores=[
+          {"player":"Zephyr","click":4125,"type":"zen","speed":890},
+          {"player":"Zephyr","click":4125,"type":"zen","speed":445},
+          {"player":"Zephyr","click":4125,"type":"zen","speed":45},
+          {"player":"Zephyr","click":125,"type":"classic","speed":400},
+          {"player":"Zephyr","click":125,"type":"classic","speed":542},
+          {"player":"Zephyr","click":125,"type":"classic","speed":78}
         ];
+        $scope.ranks=[
+          {"rank":1,"username":"Zephyr","click":4125,"country":"Cameroon","speed":45,type:"zen"},
+          {"rank":1,"username":"Zephyr","click":4125,"country":"Cameroon","speed":45,type:"classic"},
+          {"rank":2,"username":"Foris","click":4205,"country":"Cameroon","speed":45,type:"zen"},
+          {"rank":2,"username":"Foris","click":4025,"country":"Cameroon","speed":45,type:"classic"},
+          {"rank":3,"username":"Spij","click":425,"country":"Cameroon","speed":45,type:"zen"},
+          {"rank":3,"username":"Spij","click":425,"country":"Cameroon","speed":45,type:"classic"},
+          {"rank":4,"username":"Quentin","click":125,"country":"France","speed":4,type:"zen"},
+          {"rank":4,"username":"Quentin","click":125,"country":"France","speed":4,type:"classic"}
+        ];
+       //*/
+        /* cas reels
+        RankFactory.getRanks().then(function(ranks){
+          $scope.ranks = ranks;
+        },function(msg){
+          alert(msg);
+        });
+
+        ScoreFactory.getScores().then(function(scores){
+          $scope.scores = scores;
+        },function(msg){
+          alert(msg);
+        });*/
+
     }])
 
     .controller('HomeCtrl', ['$scope','$ionicPopup','$location',function($scope,$ionicPopup,$location) {
@@ -72,7 +116,6 @@ angular.module('sc.controllers', [])
 
       var time=10;
       $scope.time="10s";
-      var chrono;
       var state=true;
 
       $scope.hit1=0;
@@ -145,9 +188,9 @@ angular.module('sc.controllers', [])
       // Gestion du chrono
       $scope.StartChrono = function() {
         // Don't start a new fight if we are already fighting
-        if ( angular.isDefined(chrono) ) return;
+        if ( angular.isDefined(chrono_multi) ) return;
 
-        chrono = $interval(function() {
+        chrono_multi = $interval(function() {
           if(time>0){
             time--;
             $scope.time=""+time;
@@ -174,13 +217,13 @@ angular.module('sc.controllers', [])
       };
 
       $scope.StopChrono=function(){
-        $interval.cancel(chrono);
-        chrono=undefined;
+        $interval.cancel(chrono_multi);
+        chrono_multi=undefined;
       }
 
       $scope.Restart=function(){
-        $scope.hit1=0
-        $scope.hit2=0
+        $scope.hit1=0;
+        $scope.hit2=0;
         $scope.time="10s";
         time=10;
         $scope.StartChrono();
@@ -372,7 +415,6 @@ angular.module('sc.controllers', [])
 
         var time=10;
         $scope.time="10";
-        var chrono;
         var state=true;
 
         /*** Bonus ***/
@@ -442,12 +484,12 @@ angular.module('sc.controllers', [])
           $scope.time=time;
         }
 
-        // Gestion du chrono
+        // Gestion du chrono_player
         $scope.StartChrono = function() {
             // Don't start a new fight if we are already fighting
-            if ( angular.isDefined(chrono) ) return;
+            if ( angular.isDefined(chrono_player) ) return;
 
-            chrono = $interval(function() {
+          chrono_player = $interval(function() {
                 if(time>0){
                     time--;
                     $scope.time=time;
@@ -465,8 +507,8 @@ angular.module('sc.controllers', [])
         };
 
         $scope.StopChrono=function(){
-            $interval.cancel(chrono);
-            chrono=undefined;
+            $interval.cancel(chrono_player);
+          chrono_player=undefined;
         }
 
         $scope.Restart=function(){

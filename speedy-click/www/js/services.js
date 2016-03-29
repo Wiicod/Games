@@ -296,7 +296,7 @@ angular.module('sc.services', [])
                   item.player=player.id;
                   ApiFactory.addScore(item).then(function(data){
                   },function(msg){
-                    alert("Impossible score non mis a jour");
+                   // alert("Impossible score non mis a jour");
                   });
 
                 },function(msg){
@@ -324,7 +324,7 @@ angular.module('sc.services', [])
               ApiFactory.addScore(res).then(function(data){
 
               },function(msg){
-                alert("Impossible score non mis a jour");
+               // alert("Impossible score non mis a jour");
               });
 
             },function(msg){

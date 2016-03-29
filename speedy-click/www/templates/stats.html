@@ -13,18 +13,18 @@
      <div class="list">
        <div class="row ligne">
          <div class="col col-50">
-           <span class="option">Zen</span>
+           <span class="option">{{ filtre.type}}</span>
            <label class="toggle ">
-             <input type="checkbox">
+             <input type="checkbox" ng-model="filtre.flag_type">
              <div class="track">
                <div class="handle"></div>
              </div>
            </label>
          </div>
          <div class="col col-50">
-           <span class="option">Local</span>
+           <span class="option">{{filtre.area}}</span>
            <label class="toggle ">
-             <input type="checkbox">
+             <input type="checkbox" ng-model="filtre.flag_area" >{{flag_area}}
              <div class="track">
                <div class="handle"></div>
              </div>
@@ -32,11 +32,57 @@
          </div>
        </div>
 
-       <div class="item" style="padding: 8px;" ng-repeat="n in [1,2,4,5,7,8,91,55,45,86,16,36]">
-         <span>Zephyr</span>
-        <span class="score">
-          1455
+       <div ng-if="filtre.flag_area" class="animate-if">
+         <span class="col">Your personnal records</span>
+         <div  class="item row " style="padding: 8px;" >
+           <span class="col">Rank</span>
+           <span class="col">Speed</span>
+           <span class="col">Click</span>
         </span>
+         </div>
+         <div  class="item row " style="padding: 8px;" ng-repeat="s in scores| orderBy:'-click' | filter:{type:filtre.type}">
+           <span class="col">
+             {{$index+1}}
+           </span>
+        <span class="col">
+          {{s.speed}}
+        </span><span class="col score">
+          {{s.click}}
+        </span>
+         </div>
+
+
+       </div>
+       <div ng-if="!filtre.flag_area" class="animate-if">
+         <span class="col">Words Ranking</span>
+         <div  class="item row " style="padding: 8px;" >
+           <span class="col">Rank</span>
+           <span class="col">Name</span>
+           <!--<span class="col">Country</span>-->
+           <span class="col">Click</span>
+           <span class="col">Speed</span>
+        </span>
+         </div>
+         <div  class="item row " style="padding: 8px;" ng-repeat="r in ranks |orderBy:'-click' | filter:{type:filtre.type}">
+           <span class="col">
+             {{r.rank | ordinal}}
+           </span>
+          <span class="col score">
+            {{r.username}}
+          </span>
+         <!--<span class="col score">-->
+            <!--{{r.country}}-->
+          <!--</span>-->
+            <span class="col score ">
+            {{r.click}}
+          </span>
+           <span class="col score ">
+            {{r.speed}}
+          </span>
+
+         </div>
+
+
        </div>
 
        <p class="text-center padding-top">
