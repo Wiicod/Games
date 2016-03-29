@@ -34,7 +34,13 @@ h1,h2,h3,h4,h5,button{
 }
 
 ion-content, ion-view{
-  background: #000;
+  background: url('../img/bg.jpg') no-repeat;
+  background: black;
+  background-size: cover;
+}
+#jeus{
+  background: url('../img/bg.jpg') no-repeat;
+  background-size: cover;
 }
 /*********************
   NAVIGATION
@@ -62,7 +68,7 @@ ion-content, ion-view{
   MAIN IMAGE
 **********************/
 section.full-bg-img {
-  background: black;
+  background: transparent;
   /*background: url("../img/menu-bg.jpg") no-repeat center center fixed;*/
   /*background: url("http://mdbootstrap.com/images/reg-dark/reg%20(4).jpg") no-repeat center center fixed;  */
   -webkit-background-size: cover;
@@ -255,7 +261,7 @@ footer.page-footer {
 **********************/
 footer.page-footer {
   margin-top: 0;
-  background-color: #1C2331;
+  background-color: transparent;
 }
 
 /**** Ripple effect ****/
@@ -339,6 +345,9 @@ hr {
   font-size: 1.64rem;
   line-height: 110%;
   margin: 0.82rem 0 0.656rem 0
+}
+.title-game span{
+  font-size: 50px;
 }
 
 .full-bg-img {
@@ -474,6 +483,7 @@ button.btn-floating {
 
 .card{
   margin-bottom: 40px;
+  margin-top: 10px !important;
 }
 .item{
   color:#000;
@@ -538,4 +548,8 @@ button.btn-floating {
 span.option{
   position: relative;
   top: 5px;
+}
+
+.slide-up{
+  background-image: url('../img/help.jpg');
 }
