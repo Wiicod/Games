@@ -1,0 +1,127 @@
+Description des differents services et de leurs methodes
+
+Valeur Balises :
+
+- bd  : c'est la base de donnée mariadb present dans le serveur aws
+- bd local : c'est la base de donnee sqlite present dans le téléphone de l'utilisateur
+- les services précdés de la mention # permet de spécifier qu ils sont en cour de developpement
+- les methodes publiques sont les methodes qui ne sont pas precedées de la mention "*"
+- les methodes precedes de la mention "*" sont protegée et donc ne doivent pas être appelle directment dans le controlleur
+    car sont implicitement appellées par les méthodes publiques
+
+- click : le nombre de click réalisé par un joueur lors d'une partie de jeu
+- speed : la vitesse de click
+    * pour le mode classic : c'est le rapport entre click et la duree d une partie
+    * pour le mode zen : c le rapport entre click et le temps ecoulé entre le début du jeu et sans fin (he oui le mode
+        zen a un chrono qui s incremente )
+
+- type : il s'agit du type de la partie les valeurs possibles sont ( zen et classic )
+
+I) PlayerFactory
+  Traitte de tout ce qui concerne le jouer de l application il est liee a la table player de la bd local
+
+  les methodes sont :
+
+        a) getPlayer()
+
+  elle retourne l'utilisateur de l application ( premiere ligne de la table player dans la bd local)
+
+        b)addPlayer(item)
+
+  elle permet de creer le compte utilisateur  dans la bd et dans la bd local.
+  - item est un objet json de la forme item={username : "username de jouer"}
+  le reste des informations sont automatiquement remplie par la methode addPlayer
+
+  NB: Au demarage du jeu on doit pouvoir verifier s'il y a deja un compte joueur ou non (dans ce afficher un popup dans
+  lequel le joueur entre son username
+
+        c)remove(item)
+
+  elle permet de supprimer un jouer dans la bd local .
+  - item est un objet json contenant au moin une cle id {id : userid , ....}
+
+II) RankFactory
+  Traitte de tout ce qui concerne le classement mondial de l application il est  lie a la table ranks en bd-local et a
+  l API Score du serveur laravel
+
+  les methodes sont :
+
+        a)getRanks()
+
+  Retourne le classement courant des joueurs  de l application .
+  NB il est constament à jour .
+
+        b)*updateRanks()
+
+  elle met a jour la table ranks de la bd local avec les donnees provenant du serveur
+  Nb : elle automatiquement appellé lors du lancement de l application
+
+        c)*addRank()
+
+  elle ajoute une nouvelle ligne dans la table ranks .
+  NB elle automaitquement appelle par la methode updateRanks()
+
+
+III)ScoreFactory
+
+  Traitte de tout ce qui concerne le score de l'utilisateur de l application il est  lie a la table scores de la bd-local
+
+  les methodes sont :
+
+        a)getScores()
+
+  elle retourne tout les lignes de la table scores de la bd-local
+
+        b)*isNewHighScore(score)
+
+  Verifie si un score donné est le nouveau higscore de son type
+  - score est un objet json de la forme score ={click:valeur_click , speed:valeur_speed, type : type_jeu }
+
+        c)addScore(score)
+
+  Ajoute une nouvelle ligne dans la table score de la bd local
+  -score est un objet de la forme score={click:valeur_click , speed:valeur_speed, type : type_jeu }
+
+  Nb cette methode appelle automatique getPlayer() , isNewHighScore() et met aussi le score dans la bd online a jour si
+    necessaire (updateScoreOnline())
+
+        d)*getMaxScore(type)
+
+  Retourne le score max (par rapport au nombre de click ) de la bd local
+
+        e)*updateScoreOnline()
+
+  Met a jour le score en ligne de l utilisateur de l application
+
+        f)remove(score)
+
+  Supprime un score de la table scores de la bd local
+  -score est un objet json possedant au moins la cle id score={id:id_du_score,....}
+
+IV)#MultiPlayerFactory
+
+    Traitte de tout ce qui concerne le jeu Multijoueur
+
+    les methodes sont :
+
+        a)getPlayers()
+
+    Retourne tout les joueur connectés pouvant jouer une partie
+
+       b)sendScore(score)
+
+    Envoie la valeur du score vers le serveur
+    - score est un object json de la forme {click : val_click ,type :val_type }
+
+        c)receiveScore()
+
+    Recoit le score de l adversaire
+
+
+V) *DBQuery
+
+ Traitte de toute requete vers la bd  local
+
+VI)*ApiFactory
+
+ Traitte de tout appel vers l api

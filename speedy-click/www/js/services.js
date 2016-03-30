@@ -505,7 +505,7 @@ angular.module('sc.services', [])
           return deferred.promise;
 
         },
-        receiveScor: function(){
+        receiveScore: function(){
           var deferred= $q.defer();
           return deferred.promise;
 
