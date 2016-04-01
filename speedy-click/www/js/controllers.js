@@ -21,7 +21,12 @@ angular.module('sc.controllers', [])
         area:"local",
         type:"classic",
         flag_area:true,
-        flag_type:true
+        flag_type:true,
+        rank_order:"click"
+      };
+
+      $scope.frank_order = function(ro){
+        $scope.filtre.rank_order=ro;
       };
 
 
@@ -590,7 +595,6 @@ angular.module('sc.controllers', [])
                   if(time==0){
                     // enregistrement du score
                     ScoreFactory.addScore({click:$scope.hit , speed:$scope.hit/10, type : "classic" }).then(function(data){
-                        alert("addScore "+JSON.stringify(data));
                     },
                     function(data){
                       alert(JSON.stringify(data));
