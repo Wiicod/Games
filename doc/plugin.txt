@@ -1,2 +1,6 @@
 
 cordova plugin add https://github.com/vliesaputra/DeviceInformationPlugin
+cordova plugin add https://github.com/brodysoft/Cordova-SQLitePlugin.git
+cordova plugin add https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git
+cordova plugin add https://github.com/vliesaputra/DeviceInformationPlugin
+

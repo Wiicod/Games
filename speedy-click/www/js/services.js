@@ -123,7 +123,6 @@ angular.module('sc.services', [])
                 url:server+'player',
                 params:player
               }).success(function(data,status){
-
               // console.log(data.user);
               if(status==200){
                 factory.player =data.player;
@@ -273,7 +272,8 @@ angular.module('sc.services', [])
                 var query = "INSERT INTO player (id,username,email,telephone,country,city,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)";
                 var param = [item.id,item.username,item.email,item.telephone,item.country,item.city,item.created_at,item.updated_at];
                 DBQuery.query(query,param).then(function(res){
-                  deferred.resolve(player);
+                  //alert("res2 "+JSON.stringify(res2));
+                  deferred.resolve(item)
                 },function(msg){
                   deferred.reject(msg);
                 });
@@ -324,8 +324,9 @@ angular.module('sc.services', [])
         isNewHighScore:function(score){
           var deferred = $q.defer();
           var query = "SELECT max(click) FROM scores where type = ?;";
-          DBQuery.query(outerquery,[score.type]).then(function(res){
-            alert(res);
+          DBQuery.query(query,[score.type]).then(function(res){
+          //DBQuery.query(outerquery,[score.type]).then(function(res){
+            alert("is res "+JSON.stringify(res));
             max = res;
             deferred.resolve(max<score.click);
           },function(err){
@@ -348,6 +349,7 @@ angular.module('sc.services', [])
                 PlayerFactory.getPlayer().then(function(player){
                   item.player=player.id;
                   ApiFactory.addScore(item).then(function(data){
+                    deferred.resolve(item);
                   },function(msg){
                    // alert("Impossible score non mis a jour");
                   });

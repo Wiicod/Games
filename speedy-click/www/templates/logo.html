@@ -1,5 +1,5 @@
-<ion-view>
-  <ion-content style="background: url('img/bg.jpg'); background-size: cover">
+<ion-view view-title="Logo">
+  <ion-content style="background-color: black;">
     <style type="text/css">
 
     </style>
@@ -12,11 +12,19 @@
 
       <div class="container animated zoomIn" id="container">
         <p style="color: white;
-margin: 129px 20px;
+margin: 129px 20px 0px;
 background: black none repeat scroll 0% 0%;
 padding: 0px 10px;
-text-align: center;">Who will be the
-          <span style="color: #cc0000">speed master</span>
+text-align: center;">
+          <span ng-if="user.state==true">Hi, <span style="color: #cc0000;">{{user.name}}</span></span>
+          <br ng-if="user.state==true"/>
+          <span ng-if="user.state==false">Who w</span>
+          <span ng-if="user.state==true">W</span>ill <span ng-if="user.state==true">you</span> be the
+          <span style="color: #cc0000">speed master</span><span ng-if="user.state==true"> today ?</span>
+
+          <form action="" class="list">
+            <input type="text" placeholder="Username"/>
+          </form>
         </p>
 
       </div>

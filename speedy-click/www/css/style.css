@@ -438,7 +438,7 @@ button.btn-floating {
   background-size: cover;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
   color: #fff;
-  height: 200px;
+  height: 76px;
   position: relative;
   text-align: center;
   -webkit-transition: all 1s cubic-bezier(.55,0,.1,1);
@@ -559,7 +559,7 @@ span.option{
 
 .animate-if {
   background:white;
-  border:1px solid black;
+  border:1px solid #eee;
   padding:10px;
 }
 
