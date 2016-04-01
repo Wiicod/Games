@@ -273,7 +273,7 @@ angular.module('sc.services', [])
                 var query = "INSERT INTO player (id,username,email,telephone,country,city,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)";
                 var param = [item.id,item.username,item.email,item.telephone,item.country,item.city,item.created_at,item.updated_at];
                 DBQuery.query(query,param).then(function(res){
-                  deferred.resolve(res);
+                  deferred.resolve(player);
                 },function(msg){
                   deferred.reject(msg);
                 });
@@ -283,7 +283,7 @@ angular.module('sc.services', [])
               });
             });
 
-
+            return deferred.promise;
         },
 
         remove: function(item) {

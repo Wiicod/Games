@@ -8,7 +8,7 @@ angular.module('sc.controllers', [])
 
     }])
 
-    .controller('StatsCtrl', ['$scope','RankFactory','ScoreFactory',function($scope,RankFactory,ScoreFactory){
+    .controller('StatsCtrl', ['$scope','RankFactory','ScoreFactory',function($scope,RankFactory,ScoreFactory,Pl){
 
       $scope.filtre={
         area:"local",
