@@ -70,6 +70,11 @@ angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
         templateUrl: 'templates/home-hexa.html',
         controller: 'HomeCtrl'
       })
+      .state('logo', {
+        url: '/logo',
+        templateUrl: 'templates/logo.html',
+        controller: 'LogoCtrl'
+      })
       .state('multi', {
         url: '/multi',
         templateUrl: 'templates/multi.html',

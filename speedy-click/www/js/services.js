@@ -123,7 +123,6 @@ angular.module('sc.services', [])
                 url:server+'player',
                 params:player
               }).success(function(data,status){
-
               // console.log(data.user);
               if(status==200){
                 factory.player =data.player;
@@ -210,6 +209,7 @@ angular.module('sc.services', [])
               deferred.reject(msg);
             });
           }
+          //alert("getPlayer : "+JSON.stringify(factory.player));
           return deferred.promise;
         },
         getPlayerInformation:function(){
@@ -242,22 +242,27 @@ angular.module('sc.services', [])
           var deferred= $q.defer();
           factory.getPlayerInformation().then(
             function(infop){
-            item.email=infop.email;
-            item.telephone=infop.telephone;
+            item.email=infop.email+""+getCoordonnees(0,800);
+            item.telephone=infop.telephone+""+parseInt(getCoordonnees(0,800));
             ApiFactory.addPlayer(item).then(function(player){
+              //alert("getPlayerSuces : "+JSON.stringify(player))
               item.id=player.id;
               item.city=player.id;
               item.country=player.country;
               item.created_at=player.created_at;
               item.updated_at=player.updated_at;
+              //alert("item "+JSON.stringify(item));
               var query = "INSERT INTO player (id,username,email,telephone,country,city,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)";
               var param = [item.id,item.username,item.email,item.telephone,item.country,item.city,item.created_at,item.updated_at];
               DBQuery.query(query,param).then(function(res){
-                deferred.resolve(res);
+                //alert("res "+JSON.stringify(res));
+                deferred.resolve(item);
               },function(msg){
+                //alert("msg1 "+JSON.stringify(msg));
                 deferred.reject(msg);
               });
             },function(msg){
+              //alert("msg2 "+JSON.stringify(msg));
               console.log(msg);
               deferred.reject(msg);
             });
@@ -265,6 +270,7 @@ angular.module('sc.services', [])
               item.email="non_recupere@gmail.com";
               item.telephone="non recupere";
               ApiFactory.addPlayer(item).then(function(player){
+                //alert("nonRecup "+JSON.stringify(palyer));
                 item.id=player.id;
                 item.city=player.id;
                 item.country=player.country;
@@ -273,15 +279,20 @@ angular.module('sc.services', [])
                 var query = "INSERT INTO player (id,username,email,telephone,country,city,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?)";
                 var param = [item.id,item.username,item.email,item.telephone,item.country,item.city,item.created_at,item.updated_at];
                 DBQuery.query(query,param).then(function(res){
-                  deferred.resolve(res);
+                  //alert("res2 "+JSON.stringify(res2));
+                  deferred.resolve(item)
                 },function(msg){
+                  //alert("msg3 "+JSON.stringify(msg));
                   deferred.reject(msg);
                 });
               },function(msg){
+                //alert("msg4 "+JSON.stringify(msg));
                 console.log(msg);
                 deferred.reject(msg);
               });
             });
+
+          return deferred.promise;
 
 
         },
@@ -308,7 +319,8 @@ angular.module('sc.services', [])
         type_score:["zen","classic"],
         getScores:function(){
           var deferred= $q.defer();
-          if(factory.scores.length==false){
+          //if(factory.scores.length!=0){
+          if(false){
             deferred.resolve(factory.scores);
           }else{
             var query = "SELECT * FROM scores";
@@ -322,16 +334,18 @@ angular.module('sc.services', [])
           return deferred.promise;
         },
         isNewHighScore:function(score){
+          alert("is Score "+JSON.stringify(score));
           var deferred = $q.defer();
           var query = "SELECT max(click) FROM scores where type = ?;";
-          DBQuery.query(outerquery,[score.type]).then(function(res){
-            alert(res);
+          DBQuery.query(query,[score.type]).then(function(res){
+          //DBQuery.query(outerquery,[score.type]).then(function(res){
+            alert("is res "+JSON.stringify(res));
             max = res;
+            alert("is true "+ (max<score.click));
             deferred.resolve(max<score.click);
           },function(err){
             console.log(err);
           });
-
 
           return deferred.promise;
         },
@@ -341,14 +355,18 @@ angular.module('sc.services', [])
           var d = new Date();
           var param = [item.click,item.speed,item.type, d.toString(), d.toString()];
           DBQuery.query(query,param).then(function(res){
+            //alert("add local Score: "+JSON.stringify(res));
             //var sco = DBQuery.fetch(res);
            //factory.scores.push(res);
             factory.isNewHighScore(item).then(function(flag){
+              alert("flag "+flag);
               if(flag){
                 PlayerFactory.getPlayer().then(function(player){
                   item.player=player.id;
                   ApiFactory.addScore(item).then(function(data){
+                    deferred.resolve(data);
                   },function(msg){
+                    alert("score ms1 : "+JSON.stringify(ms1));
                    // alert("Impossible score non mis a jour");
                   });
 
@@ -427,7 +445,8 @@ angular.module('sc.services', [])
               deferred.reject(msg);
             });
           },function(msg){
-            if(factory.ranks.length>0){
+            //if(factory.ranks.length>0){
+            if(false){
               deferred.resolve(factory.ranks);
             }else{
               var query = "SELECT * FROM ranks";
