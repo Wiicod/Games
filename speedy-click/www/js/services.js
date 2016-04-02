@@ -308,8 +308,8 @@ angular.module('sc.services', [])
         type_score:["zen","classic"],
         getScores:function(){
           var deferred= $q.defer();
-          if(factory.scores.length==false){
-            deferred.resolve(factory.scores);
+          if(false){
+            deferred.resolve(factory.scores); // ne change plus ça
           }else{
             var query = "SELECT * FROM scores";
             DBQuery.query(query).then(function(scores){
@@ -326,7 +326,7 @@ angular.module('sc.services', [])
           var query = "SELECT max(click) FROM scores where type = ?;";
           DBQuery.query(query,[score.type]).then(function(res){
           //DBQuery.query(outerquery,[score.type]).then(function(res){
-            alert("is res "+JSON.stringify(res));
+            //alert("is res "+JSON.stringify(res));
             max = res;
             deferred.resolve(max<score.click);
           },function(err){
@@ -355,7 +355,7 @@ angular.module('sc.services', [])
                   });
 
                 },function(msg){
-                  alert(msg);
+                  //alert(msg);
                 });
 
               }
@@ -393,7 +393,7 @@ angular.module('sc.services', [])
            for(var i=0;i<factory.type_score.length;i++){
              factory.getMaxScore(factory.type_score[i]).then(function(res){
                ApiFactory.addScore(res).then(function(data){
-                 alert("ok");
+                 //alert("ok");
                },function(msg){
                  alert("echec update score"+msg);
                });
@@ -472,7 +472,7 @@ angular.module('sc.services', [])
             });
           },
             function(msg){
-            deferred.reject("Veullez vous connecter pour obtenir les mise a jour !")
+            deferred.reject("Veullez vous connecter pour obtenir les mise à jour !")
           });
           return deferred.promise;
         },

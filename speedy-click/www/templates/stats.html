@@ -1,6 +1,11 @@
 
-<ion-view view-title="Zen Statistic">
-  <ion-content>
+<ion-view view-title="Statistic">
+  <ion-content scroll="false">
+    <style type="text/css">
+      .animate-if span{
+        font-size: 10px !important;
+      }
+    </style>
     <!-- Intro image -->
     <div class="hero slide-up" >
       <div class="content">
@@ -33,15 +38,16 @@
          </div>
        </div>
 
-       <div ng-if="filtre.flag_area" class="animate-if">
-         <span class="col">Your personnal records</span>
-         <div  class="item row " style="padding: 8px;" >
-           <span class="col">Rank</span>
-           <span class="col">Speed</span>
-           <span class="col">Click</span>
-        </span>
-         </div>
-         <div  class="item row " style="padding: 8px;" ng-repeat="s in scores| orderBy:'-click' | filter:{type:filtre.type}">
+       <div class="card-scroll">
+         <div ng-if="filtre.flag_area" class="animate-if">
+           <span class="col">Your personnal records</span>
+           <div  class="item row " style="padding: 8px;" >
+             <span class="col">Rank</span>
+             <span class="col">Speed</span>
+             <span class="col">Click</span>
+             </span>
+           </div>
+           <div  class="item row " style="padding: 2px;" ng-repeat="s in scores| orderBy:'-click' | filter:{type:filtre.type}">
            <span class="col">
              {{$index+1}}
            </span>
@@ -50,30 +56,30 @@
         </span><span class="col score">
           {{s.click}}
         </span>
-         </div>
+           </div>
 
 
-       </div>
-       <div ng-if="!filtre.flag_area" class="animate-if">
-         <span class="col">Words Ranking</span>
-         <div  class="item row " style="padding: 8px;" >
-           <span class="col">Rank</span>
-           <span class="col">Name</span>
-           <!--<span class="col">Country</span>-->
-           <span class="col">Click</span>
-           <span class="col">Speed</span>
-        </span>
          </div>
-         <div  class="item row " style="padding: 8px;" ng-repeat="r in ranks |orderBy:'-click' | filter:{type:filtre.type}">
+         <div ng-if="!filtre.flag_area" class="animate-if">
+           <span class="col">Words Ranking</span>
+           <div  class="item row " style="padding: 8px;" >
+             <span class="col">Rank</span>
+             <span class="col">Name</span>
+             <!--<span class="col">Country</span>-->
+             <span class="col">Click</span>
+             <span class="col">Speed</span>
+             </span>
+           </div>
+           <div  class="item row " style="padding: 2px;" ng-repeat="r in ranks |orderBy:'-click' | filter:{type:filtre.type}">
            <span class="col">
-             {{r.rank | ordinal}}
+             {{($index+1) | ordinal}}
            </span>
           <span class="col score">
             {{r.username}}
           </span>
-         <!--<span class="col score">-->
-            <!--{{r.country}}-->
-          <!--</span>-->
+             <!--<span class="col score">-->
+             <!--{{r.country}}-->
+             <!--</span>-->
             <span class="col score ">
             {{r.click}}
           </span>
@@ -81,12 +87,16 @@
             {{r.speed}}
           </span>
 
+           </div>
+
+
          </div>
-
-
        </div>
 
        <p class="text-center padding-top">
+         <button class="button" style="background: #cc0000; color: white;" ng-click="refreshScore()">
+           Refresh
+         </button>
          <button class="button" style="background: #cc0000; color: white;" ui-sref="home">
            Back
          </button>

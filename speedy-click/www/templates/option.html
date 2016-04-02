@@ -11,15 +11,27 @@
     </div>
     <!--/. Intro image -->
     <div class="card">
-      <form class="list list-inset" ng-submit="SaveOption(username,email)">
-        <label class="item item-input">
-          <span class="input-label">Username :</span>
-          <input type="text" ng-model="username">
-        </label>
-        <label class="item item-input">
-          <span class="input-label">Email</span>
-          <input type="email" ng-model="email">
-        </label>
+      <form class="list list-inset" ng-submit="SaveOption(langue,comment)">
+        <div class="card-scroll">
+          <label class="item item-input item-select">
+            <span class="input-label">Language </span>
+            <select ng-model="langue" ng-options="l.value as l.name for l in langues">
+              <option selected="selected">Select Priority</option>
+            </select>
+          </label>
+          <div class="gold-bg padding">
+            <div class="item item-divider gold-bg text-center">
+              Your suggestions
+            </div>
+            <label class="item item-input">
+              <span class="input-label">title : </span>
+              <input type="text" ng-model="comment.title"/>
+            </label>
+            <label class="item item-input">
+              <textarea placeholder="Comments" ng-model="comment.description"></textarea>
+            </label>
+          </div>
+        </div>
         <p class="padding-top">
           <button class="button" style="background: #cc0000; color: white;" ui-sref="home">
             Back
