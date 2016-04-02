@@ -354,7 +354,7 @@ angular.module('sc.services', [])
                   });
 
                 },function(msg){
-                  alert(msg);
+                  //alert(msg);
                 });
 
               }else{
@@ -395,7 +395,7 @@ angular.module('sc.services', [])
            for(var i=0;i<factory.type_score.length;i++){
              factory.getMaxScore(factory.type_score[i]).then(function(res){
                ApiFactory.addScore(res).then(function(data){
-                 alert("ok");
+                 //alert("ok");
                },function(msg){
                  alert("echec update score"+msg);
                });

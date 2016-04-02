@@ -29,10 +29,14 @@ body{
 i{
   cursor: pointer;
 }
-h1,h2,h3,h4,h5,button{
+h1,h2,h3,h4,h5,button, select{
   font-family: "Perfect dark", Astron !important;
 }
-
+textarea{
+  resize: none;
+  height: 200px;
+  max-height: 200px;
+}
 ion-content, ion-view{
   background: url('../img/bg.jpg') no-repeat;
   background: black;
@@ -207,7 +211,12 @@ footer.page-footer {
 .btn-gold:hover{
   background-color: rgb(79,72,44)!important;
 }
-
+.gold{
+  color: #B69E40 !important;
+}
+.gold-bg{
+  background-color: #B69E40 !important;
+}
 .btn-ptc {
   background-color: #1C2331 !important;
 }
@@ -424,6 +433,10 @@ button.btn-floating {
   text-decoration: none;
 }
 
+.popup{
+  color: white;
+}
+
 .popup-head{
   border: none;}
 .popup-title{
@@ -438,7 +451,7 @@ button.btn-floating {
   background-size: cover;
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
   color: #fff;
-  height: 76px;
+  height: 100px;
   position: relative;
   text-align: center;
   -webkit-transition: all 1s cubic-bezier(.55,0,.1,1);
@@ -577,5 +590,35 @@ span.option{
   opacity:1;
 }
 
+.card-scroll{
+  overflow-y: auto;
+}
+
+.item-body p{
+  font-size: 10px !important;
+  color: #333 !important;
+}
+
+.item-body{
+  padding: 10px !important;
+}
+
+.card .button{
+  font-size: 10px !important;
+  line-height: 32px !important;
+  min-height: 20px !important;
+}
+
+.card input{
+  padding-right: 10px !important;
+}
+
+.card p{
+  margin-bottom: 2px;
+}
+
+.popup-sub-title{
+  color: #cc0000;
+}
 
 .activeMarkClass { color: red; }

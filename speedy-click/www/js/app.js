@@ -7,6 +7,7 @@
 
 var chrono_player;
 var chrono_multi;
+var chrono_player_zen;
 var server="http://54.200.82.255/api/";
 angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
 
@@ -55,6 +56,10 @@ angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
         if(chrono_player!=undefined){
           $interval.cancel(chrono_player);
           chrono_player=undefined;
+        }
+        if(chrono_player_zen!=undefined){
+          $interval.cancel(chrono_player_zen);
+          chrono_player_zen=undefined;
         }
     });
 

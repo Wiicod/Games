@@ -1,9 +1,11 @@
 var default_time=5;
+var default_zen_time_allow=3600;
 var default_time_bonus=3;
 var default_time_label="10s";
 var default_score_label="0 hit";
 var bonusSize=50;
 var scoreBonus=450;
+var one_minute=60;
 
 angular.module('sc.controllers', [])
 
@@ -15,8 +17,28 @@ angular.module('sc.controllers', [])
 
     }])
 
-    .controller('StatsCtrl', ['$scope','RankFactory','ScoreFactory',function($scope,RankFactory,ScoreFactory,Pl){
+    .controller('StatsCtrl', ['$scope','RankFactory','ScoreFactory','$ionicLoading',
+    function($scope,RankFactory,ScoreFactory,$ionicLoading){
+    setCardSize(20);
 
+    $scope.refreshScore=function(){
+      $ionicLoading.show({ template: 'Chargement des scores....<br><ion-spinner icon="android"></ion-spinner>' });
+      RankFactory.getRanks().then(function(ranks){
+        $scope.ranks = ranks;
+        $ionicLoading.hide();
+        //alert("rank "+JSON.stringify(ranks));
+      },function(msg){
+        alert(msg);
+      });
+
+      ScoreFactory.getScores().then(function(scores){
+        $scope.scores = scores;
+        $ionicLoading.hide();
+        //alert("scores "+JSON.stringify(scores));
+      },function(msg){
+        alert(msg);
+      });//*/
+    }
       $scope.filtre={
         area:"local",
         type:"classic",
@@ -67,22 +89,27 @@ angular.module('sc.controllers', [])
         ];
        //*/
         //* cas reels
+        $ionicLoading.show({ template: 'Chargement...<br><ion-spinner icon="android"></ion-spinner>' });
         RankFactory.getRanks().then(function(ranks){
           $scope.ranks = ranks;
+          $ionicLoading.hide();
+          //alert("rank "+JSON.stringify(ranks));
         },function(msg){
           alert(msg);
         });
 
         ScoreFactory.getScores().then(function(scores){
           $scope.scores = scores;
+          $ionicLoading.hide();
+          //alert("scores "+JSON.stringify(scores));
         },function(msg){
           alert(msg);
         });//*/
 
     }])
 
-  .controller('HomeCtrl', ['$scope','$ionicPopup','$location','$timeout','PlayerFactory',
-    function($scope,$ionicPopup,$location,$timeout,PlayerFactory) {
+  .controller('HomeCtrl', ['$scope','$ionicPopup','$location','$timeout','PlayerFactory','$rootScope',
+    function($scope,$ionicPopup,$location,$timeout,PlayerFactory,$rootScope) {
 
       $scope.player={};
 
@@ -137,6 +164,7 @@ angular.module('sc.controllers', [])
             // utilisateur déjà present. affichage d'un mot de bienvenu
             $scope.showWellcomePopup(data.username);
             $scope.player=data;
+            $rootScope.player=data;
           }
           else{
             // utilisateur pas encore present, enregistrement
@@ -152,7 +180,7 @@ angular.module('sc.controllers', [])
       // An elaborate, custom popup
       var myPopup = $ionicPopup.show({
         //template: '<input type="text" style="padding: 0px 5px" ng-model="user.username">',
-        title: 'Wellcome '+username
+        title: 'Wellcome <span style="color:#cc0000">'+username+'</span>'
         //subTitle: 'Please use normal things',
       });
 
@@ -186,7 +214,7 @@ angular.module('sc.controllers', [])
               } else {
                 // verification si le user la n'exite pas deja
                 PlayerFactory.addPlayer({username:$scope.user.username}).then(function(data){
-                  alert(JSON.stringify(data));
+                  //alert(JSON.stringify(data));
                     $scope.showWellcomePopup(data.username);
                 },
                 function(data){
@@ -213,9 +241,9 @@ angular.module('sc.controllers', [])
   }])
 
 
-    .controller('HelpCtrl', ['$scope',function($scope,NavbarFactory) {
-
-    }])
+  .controller('HelpCtrl', ['$scope',function($scope,NavbarFactory) {
+    setCardSize(-45);
+  }])
 
     .controller('MultiCtrl',  ['$scope','$ionicPopup','$location','$interval','$timeout',
     function($scope,$ionicPopup,$location,$interval,$timeout) {
@@ -388,9 +416,11 @@ angular.module('sc.controllers', [])
       $scope.StartChrono();
     }])
 
-    .controller('PlayZenCtrl',  ['$scope','$ionicPopup','$location','$timeout',function($scope,$ionicPopup,$location,$timeout) {
-
+    .controller('PlayZenCtrl',  ['$scope','$ionicPopup','$location','$interval','$timeout','ScoreFactory','RankFactory',
+    function($scope,$ionicPopup,$location,$interval,$timeout,ScoreFactory,RankFactory) {
+      $scope.type_jeu="zen";
       $scope.popupGamePause  = function() {
+        $scope.StopChrono();
         var confirmPopup = $ionicPopup.alert({
           title: 'Score : '+$scope.score,
           //template: 'Score : '+$scope.score,
@@ -406,13 +436,15 @@ angular.module('sc.controllers', [])
               text: '<button class="button" ui-sref="play-zen"><i class="icon ion-play"></i> </button>',
               type: ' btn-gold',
               onTap: function(e) {
-
+                $scope.StartChrono();
               }
             },
             {
-              text: '<button class="button" ui-sref="play-zen"><i class="icon ion-android-exit"></i> </button>',
+              text: '<button class="button"><i class="icon ion-android-exit"></i> </button>',
               type: ' btn-gold',
               onTap: function(e) {
+                // enregistrement du score
+                saveScore($scope,time,ScoreFactory,RankFactory)
                 $location.path("home");
               }
             }
@@ -426,7 +458,40 @@ angular.module('sc.controllers', [])
           }
         });
       };
-      $scope.time=10;
+
+      $scope.showStopZenPopup = function() {
+        $scope.StopChrono();
+        var myPopup = $ionicPopup.show({
+          template: '<p class="text-center">Your score : '+$scope.score+'</p>',
+          title: 'Temps de jeu depasse',
+          subTitle: 'Le temps de jeu permis en ce mode est de une heure',
+          scope: $scope,
+          buttons: [
+            //{ text: 'Cancel' },
+            {
+              text: '<button class="button"><i class="icon ion-refresh"></i> </button>',
+              type: 'btn-gold',
+              onTap: function(e) {
+                $scope.Restart();
+              }
+            },
+            {
+              text: '<button class="button"><i class="icon ion-android-exit"></i> </button>',
+              type: 'btn-gold',
+              onTap: function(e) {
+                $location.path("home");
+              }
+            }
+          ]
+        });
+
+        myPopup.then(function(res) {
+          console.log('Tapped!', res);
+          //
+        });
+      };
+      $scope.time="00 : 00";
+      var time=0;
       var state=true;
       var compteur1=0;
 
@@ -463,17 +528,39 @@ angular.module('sc.controllers', [])
           }
       }
 
+      $scope.StartChrono = function() {
+      // Don't start a new fight if we are already fighting
+      if ( angular.isDefined(chrono_player_zen) ) return;
+      chrono_player_zen = $interval(function() {
+        time++;
+        $scope.time=formatTime(time);
+        if(time==default_zen_time_allow)// 1 heur de jeu arret
+        {
+          $scope.StopChrono();
+          $scope.showStopZenPopup();
+          saveScore($scope,time,ScoreFactory,RankFactory)
+        }
+      }, 1000);
+    };
+      $scope.StopChrono=function(){
+        $interval.cancel(chrono_player_zen);
+        chrono_player_zen=undefined;
+      }
       $scope.Restart=function(){
           $scope.hit=0
           $scope.score=default_score_label;
+          $scope.time=0;
+        time=0;
           state=true;
           compteur1=0;
-      }
+        $scope.StartChrono();
+      };
 
+      $scope.StartChrono();
     }])
-    .controller('PlayClassicCtrl',  ['$scope','$ionicPopup','$location','$interval','$timeout','ScoreFactory',
-    function($scope,$ionicPopup,$location,$interval,$timeout,ScoreFactory) {
-
+    .controller('PlayClassicCtrl',  ['$scope','$ionicPopup','$location','$interval','$timeout','ScoreFactory','RankFactory',
+    function($scope,$ionicPopup,$location,$interval,$timeout,ScoreFactory,RankFactory) {
+      $scope.type_jeu="classic";
         $scope.popupGamePause  = function(etat) {
           $scope.StopChrono();
           var hide="";
@@ -605,6 +692,14 @@ angular.module('sc.controllers', [])
                   if(time==0){
                     // enregistrement du score
                     ScoreFactory.addScore({click:$scope.hit , speed:$scope.hit/10, type : "classic" }).then(function(data){
+                        //alert("addScore "+JSON.stringify(data));
+                        RankFactory.updateRanks().then(function(){
+
+                        },function(msg){
+                          alert(msg);
+                          $ionicLoading.hide();
+                        });
+                        ScoreFactory.updateScoreOnline();
                     },
                     function(data){
                       alert(JSON.stringify(data));
@@ -637,10 +732,19 @@ angular.module('sc.controllers', [])
 
     }])
 
-    .controller('OptionCtrl',  ['$scope',function($scope,NavbarFactory) {
+    .controller('OptionCtrl',  ['$scope','$rootScope',
+    function($scope,$rootScope) {
 
-        $scope.SaveOption=function(pseudo,email){
-            console.log(pseudo+" | "+email);
+      $scope.langues=[{value:"en",name:"English"},{value:"fr",name:"Français"}];
+      setCardSize(-10);
+        $scope.SaveOption=function(langue,comment){
+          console.info(comment,langue, $rootScope.player);
+          if(langue!=null){
+            // TODO redemarrer l'application en changeant la langue Evaris tu sais comment tu vas gerer ça
+          }
+          if(comment!=null){
+            alert("comment "+JSON.stringify(comment)+" player :"+$rootScope.player);
+          }
         }
     }]);
 
@@ -648,4 +752,39 @@ angular.module('sc.controllers', [])
 function getCoordonnees(min,max){
   console.log(min,max);
   return Math.random()*(max -min)+min;
+}
+
+function setCardSize(x){
+  var size=ny-93-44-100-x;
+  $(".card-scroll").css('height',size+'px');
+}
+
+function formatTime(second){
+  var minute =parseInt(second/one_minute);
+  var s=second-(minute*one_minute);
+  if(minute<10){
+    minute="0"+minute;
+  }
+  if(s<10){
+    s="0"+s;
+  }
+  var final_time=minute+" : "+s;
+  return final_time;
+}
+
+function saveScore(scope,time,ScoreFactory,RankFactory){
+  if(scope.hit>0){
+    ScoreFactory.addScore({click:scope.hit , speed:scope.hit/time, type : scope.type_jeu }).then(function(data){
+        //alert("addScoreZen "+JSON.stringify(data));
+        RankFactory.updateRanks().then(function(){
+        },function(msg){
+          //alert(msg);
+          $ionicLoading.hide();
+        });
+        ScoreFactory.updateScoreOnline();
+      },
+      function(data){
+        //alert(JSON.stringify(data));
+      })
+  }
 }
