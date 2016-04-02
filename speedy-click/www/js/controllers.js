@@ -25,6 +25,16 @@ angular.module('sc.controllers', [])
         rank_order:"click"
       };
 
+      $scope.myrank = 46;
+
+      $scope.showActive =function(index){
+
+        if(index == $scope.myrank){
+          return 'activeMarkClass';
+        }
+        return '';
+      };
+
       $scope.frank_order = function(ro){
         $scope.filtre.rank_order=ro;
       };

@@ -577,3 +577,5 @@ span.option{
   opacity:1;
 }
 
+
+.activeMarkClass { color: red; }

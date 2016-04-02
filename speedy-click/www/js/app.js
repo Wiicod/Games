@@ -114,6 +114,29 @@ angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
         v=input%100;
       return input+(s[(v-20)%10]||s[v]||s[0]);
     }
-  });
+  })
 
-;
+  .filter('range', function() {
+    return function(input, total) {
+      total = parseInt(total);
+
+      for (var i=0; i<total; i++) {
+        input.push(i);
+      }
+
+      return input;
+    };
+  })
+
+.directive('scrollTo', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+      scope.$watch('myrank', function(newVal, oldVal) {
+        if (newVal && newVal !== oldVal) {
+          $('body').scrollTop(element.find('.statsrank').eq(newVal).position().top)
+        }
+      });
+    }
+  };
+});

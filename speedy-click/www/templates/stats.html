@@ -64,7 +64,8 @@
            <span class="col" ng-click="frank_order('speed')">Speed <i ng-if="filtre.rank_order=='speed'" class="icon ion-arrow-graph-up-right"></i></span>
         </span>
          </div>
-         <div  class="item row " style="padding: 8px;" ng-repeat="r in ranks |orderBy:'-'+filtre.rank_order | filter:{type:filtre.type}">
+         <!--<div  class="item row statsrank " scroll-to style="padding: 8px;" ng-repeat="r in [] | range:100" ng-class="showActive($index)">-->
+         <div  class="item row statsrank " scroll-to style="padding: 8px;" ng-repeat="r in ranks |orderBy:'-'+filtre.rank_order | filter:{type:filtre.type}" ng-class="showActive($index)">
            <span class="col">
              {{($index+1) | ordinal}}
            </span>
