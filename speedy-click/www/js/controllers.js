@@ -20,7 +20,6 @@ angular.module('sc.controllers', [])
     .controller('StatsCtrl', ['$scope','RankFactory','ScoreFactory','$ionicLoading',
     function($scope,RankFactory,ScoreFactory,$ionicLoading){
     setCardSize(20);
-
     $scope.refreshScore=function(){
       $ionicLoading.show({ template: 'Chargement des scores....<br><ion-spinner icon="android"></ion-spinner>' });
       RankFactory.getRanks().then(function(ranks){
@@ -46,6 +45,9 @@ angular.module('sc.controllers', [])
         flag_type:true,
         rank_order:"click"
       };
+      $scope.frank_order = function(ro){
+        $scope.filtre.rank_order=ro;
+      };
 
       $scope.myrank = 46;
 
@@ -56,11 +58,6 @@ angular.module('sc.controllers', [])
         }
         return '';
       };
-
-      $scope.frank_order = function(ro){
-        $scope.filtre.rank_order=ro;
-      };
-
 
       $scope.$watch('filtre.flag_type',function(){
         $scope.filtre.type=$scope.filtre.flag_type?"classic":"zen";
@@ -101,7 +98,6 @@ angular.module('sc.controllers', [])
         ScoreFactory.getScores().then(function(scores){
           $scope.scores = scores;
           $ionicLoading.hide();
-          //alert("scores "+JSON.stringify(scores));
         },function(msg){
           alert(msg);
         });//*/
@@ -693,13 +689,6 @@ angular.module('sc.controllers', [])
                     // enregistrement du score
                     ScoreFactory.addScore({click:$scope.hit , speed:$scope.hit/10, type : "classic" }).then(function(data){
                         //alert("addScore "+JSON.stringify(data));
-                        RankFactory.updateRanks().then(function(){
-
-                        },function(msg){
-                          alert(msg);
-                          $ionicLoading.hide();
-                        });
-                        ScoreFactory.updateScoreOnline();
                     },
                     function(data){
                       alert(JSON.stringify(data));
@@ -732,8 +721,8 @@ angular.module('sc.controllers', [])
 
     }])
 
-    .controller('OptionCtrl',  ['$scope','$rootScope',
-    function($scope,$rootScope) {
+    .controller('OptionCtrl',  ['$scope','$rootScope','CommentFactory',
+    function($scope,$rootScope,CommentFactory) {
 
       $scope.langues=[{value:"en",name:"English"},{value:"fr",name:"Français"}];
       setCardSize(-10);
@@ -743,7 +732,11 @@ angular.module('sc.controllers', [])
             // TODO redemarrer l'application en changeant la langue Evaris tu sais comment tu vas gerer ça
           }
           if(comment!=null){
-            alert("comment "+JSON.stringify(comment)+" player :"+$rootScope.player);
+          //  alert("comment "+JSON.stringify(comment)+" player :"+$rootScope.player);
+            CommentFactory.addComment(comment).then(function(data){
+            },function(msg){
+              alert(msg);
+            });
           }
         }
     }]);
@@ -776,12 +769,6 @@ function saveScore(scope,time,ScoreFactory,RankFactory){
   if(scope.hit>0){
     ScoreFactory.addScore({click:scope.hit , speed:scope.hit/time, type : scope.type_jeu }).then(function(data){
         //alert("addScoreZen "+JSON.stringify(data));
-        RankFactory.updateRanks().then(function(){
-        },function(msg){
-          //alert(msg);
-          $ionicLoading.hide();
-        });
-        ScoreFactory.updateScoreOnline();
       },
       function(data){
         //alert(JSON.stringify(data));
