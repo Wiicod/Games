@@ -624,3 +624,5 @@ span.option{
 .popup-sub-title{
   color: #cc0000;
 }
+
+.activeMarkClass { color: red; }

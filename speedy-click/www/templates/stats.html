@@ -53,24 +53,25 @@
            </span>
         <span class="col">
           {{s.speed}}
-        </span><span class="col score">
+        </span><span class="col">
           {{s.click}}
         </span>
            </div>
 
 
+       </div>
+       <div ng-if="!filtre.flag_area" class="animate-if">
+         <span class="col">Words Ranking</span>
+         <div  class="item row " style="padding: 8px;" >
+           <span class="col">Rank</span>
+           <span class="col">Name</span>
+           <!--<span class="col">Country</span>-->
+           <span class="col" ng-click="frank_order('click')">Click <i ng-if="filtre.rank_order=='click'" class="icon ion-arrow-graph-up-right"></i></span>
+           <span class="col" ng-click="frank_order('speed')">Speed <i ng-if="filtre.rank_order=='speed'" class="icon ion-arrow-graph-up-right"></i></span>
+        </span>
          </div>
-         <div ng-if="!filtre.flag_area" class="animate-if">
-           <span class="col">Words Ranking</span>
-           <div  class="item row " style="padding: 8px;" >
-             <span class="col">Rank</span>
-             <span class="col">Name</span>
-             <!--<span class="col">Country</span>-->
-             <span class="col">Click</span>
-             <span class="col">Speed</span>
-             </span>
-           </div>
-           <div  class="item row " style="padding: 2px;" ng-repeat="r in ranks |orderBy:'-click' | filter:{type:filtre.type}">
+         <!--<div  class="item row statsrank " scroll-to style="padding: 2px;" ng-repeat="r in [] | range:100" ng-class="showActive($index)">-->
+         <div  class="item row statsrank " scroll-to style="padding: 2px;" ng-repeat="r in ranks |orderBy:'-'+filtre.rank_order | filter:{type:filtre.type}" ng-class="showActive($index)">
            <span class="col">
              {{($index+1) | ordinal}}
            </span>

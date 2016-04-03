@@ -304,13 +304,11 @@ angular.module('sc.services', [])
     .factory('ScoreFactory',['$q','DBQuery','ApiFactory','PlayerFactory',function($q,DBQuery,ApiFactory,PlayerFactory) {
 
       var factory={
-        scores:[],
+        scores:false,
         type_score:["zen","classic"],
         getScores:function(){
           var deferred= $q.defer();
-          if(false){
-            deferred.resolve(factory.scores); // ne change plus ça
-          }else{
+
             var query = "SELECT * FROM scores";
             DBQuery.query(query).then(function(scores){
               factory.scores=DBQuery.fetchAll(scores);
@@ -318,17 +316,19 @@ angular.module('sc.services', [])
             },function(msg){
               deferred.reject(msg);
             });
-          }
+
           return deferred.promise;
         },
         isNewHighScore:function(score){
           var deferred = $q.defer();
-          var query = "SELECT max(click) FROM scores where type = ?;";
+          var query = "SELECT max(click) as click FROM scores where type = ?;";
           DBQuery.query(query,[score.type]).then(function(res){
-          //DBQuery.query(outerquery,[score.type]).then(function(res){
-            //alert("is res "+JSON.stringify(res));
-            max = res;
-            deferred.resolve(max<score.click);
+            max = DBQuery.fetch(res).click;
+            if(max=undefined){
+              deferred.resolve(true);
+            }else{
+              deferred.resolve(max==score.click);
+            }
           },function(err){
             console.log(err);
           });
@@ -342,8 +342,7 @@ angular.module('sc.services', [])
           var d = new Date();
           var param = [item.click,item.speed,item.type, d.toString(), d.toString()];
           DBQuery.query(query,param).then(function(res){
-            //var sco = DBQuery.fetch(res);
-           //factory.scores.push(res);
+            item.id=res.insertId;
             factory.isNewHighScore(item).then(function(flag){
               if(flag){
                 PlayerFactory.getPlayer().then(function(player){
@@ -358,11 +357,14 @@ angular.module('sc.services', [])
                   //alert(msg);
                 });
 
+              }else{
+                deferred.resolve(item);
               }
             },function(msg){
+              deferred.resolve(item);
               console.error(msg);
             });
-            deferred.resolve(res);
+
           },function(msg){
             alert("echec d enregistrement du score");
             deferred.reject(msg);
@@ -472,7 +474,7 @@ angular.module('sc.services', [])
             });
           },
             function(msg){
-            deferred.reject("Veullez vous connecter pour obtenir les mise à jour !")
+            deferred.reject("Veuillez vous connecter pour obtenir les mise a jour !")
           });
           return deferred.promise;
         },
