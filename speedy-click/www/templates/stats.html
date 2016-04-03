@@ -44,7 +44,7 @@
            <div  class="item row " style="padding: 8px;" >
              <span class="col">Rank</span>
              <span class="col">Speed</span>
-             <span class="col">Click</span>
+             <span class="col">Hits</span>
              </span>
            </div>
            <div  class="item row " style="padding: 2px;" ng-repeat="s in scores| orderBy:'-click' | filter:{type:filtre.type}">
@@ -66,7 +66,7 @@
            <span class="col">Rank</span>
            <span class="col">Name</span>
            <!--<span class="col">Country</span>-->
-           <span class="col" ng-click="frank_order('click')">Click <i ng-if="filtre.rank_order=='click'" class="icon ion-arrow-graph-up-right"></i></span>
+           <span class="col" ng-click="frank_order('click')">Hits <i ng-if="filtre.rank_order=='click'" class="icon ion-arrow-graph-up-right"></i></span>
            <span class="col" ng-click="frank_order('speed')">Speed <i ng-if="filtre.rank_order=='speed'" class="icon ion-arrow-graph-up-right"></i></span>
         </span>
          </div>

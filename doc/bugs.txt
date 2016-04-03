@@ -1,0 +1,4 @@
+1- les scores zen du serveur ne s'affiche pas dans la vue
+2- les scores ne sont toujours pas update dans le phone apres l'enregistrement d'un score
+3- l'affichage de la speed n'est tjr pas bonne il faut 1 chiffre apres la virgule
+

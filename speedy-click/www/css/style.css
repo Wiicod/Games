@@ -502,7 +502,7 @@ button.btn-floating {
   color:#000;
 }
 .score{
-  float: right;
+  /*float: right;*/
   color: #cc0000;
 }
 

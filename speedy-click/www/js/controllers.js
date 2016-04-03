@@ -21,12 +21,13 @@ angular.module('sc.controllers', [])
     function($scope,RankFactory,ScoreFactory,$ionicLoading){
     setCardSize(20);
     $scope.refreshScore=function(){
-      $ionicLoading.show({ template: 'Chargement des scores....<br><ion-spinner icon="android"></ion-spinner>' });
+      $ionicLoading.show({ template: 'Chargement des scores<br><ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
       RankFactory.getRanks().then(function(ranks){
         $scope.ranks = ranks;
         $ionicLoading.hide();
         //alert("rank "+JSON.stringify(ranks));
       },function(msg){
+        $ionicLoading.hide();
         alert(msg);
       });
 
@@ -35,6 +36,7 @@ angular.module('sc.controllers', [])
         $ionicLoading.hide();
         //alert("scores "+JSON.stringify(scores));
       },function(msg){
+        $ionicLoading.hide();
         alert(msg);
       });//*/
     }
@@ -86,7 +88,7 @@ angular.module('sc.controllers', [])
         ];
        //*/
         //* cas reels
-        $ionicLoading.show({ template: 'Chargement...<br><ion-spinner icon="android"></ion-spinner>' });
+      $ionicLoading.show({ template: 'Chargement des scores<br><ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
         RankFactory.getRanks().then(function(ranks){
           $scope.ranks = ranks;
           $ionicLoading.hide();
@@ -152,6 +154,7 @@ angular.module('sc.controllers', [])
         }
       });
     };
+
       //alert("ici");
       PlayerFactory.getPlayerInformation();
 
@@ -173,7 +176,31 @@ angular.module('sc.controllers', [])
           alert(JSON.stringify(data));
         })
 
-
+      $scope.showMultiPopup = function() {
+        // An elaborate, custom popup
+        var myPopup = $ionicPopup.show({
+          template: '<p style="text-align: justify; font-size: 10px">leave us a comment for describe what you will like to see in this mode.</p>',
+          title: 'Multi player mode',
+          subTitle: 'Coming soon',
+          buttons: [
+            {
+              text: 'Comment',
+              type: 'btn-gold',
+              onTap: function(e) {
+                myPopup.close();
+                $location.path("option");
+              }
+            },
+            {
+              text: 'Close',
+              type: 'btn-gold',
+              onTap: function(e) {
+                myPopup.close();
+              }
+            }
+          ]
+        });
+      };
       $scope.showWellcomePopup = function(username) {
       // An elaborate, custom popup
       var myPopup = $ionicPopup.show({
@@ -213,7 +240,7 @@ angular.module('sc.controllers', [])
                 // verification si le user la n'exite pas deja
                 PlayerFactory.addPlayer({username:$scope.user.username}).then(function(data){
                   //alert(JSON.stringify(data));
-                    $scope.showWellcomePopup(data.username);
+                    $scope.showWellcomePopup($scope.user.username);
                 },
                 function(data){
                   alert(JSON.stringify(data));
@@ -567,7 +594,7 @@ angular.module('sc.controllers', [])
           }
           var confirmPopup = $ionicPopup.alert({
             title: 'Score : '+$scope.score,
-            //template: 'Score : '+$scope.score,
+            template: '<span ng-if="isHighScore">Your are the new <span style="color: #cc0000;">Speed Master</span>!!!</span>',
             buttons: [
               {
                 text: '<button class="button btn-calmed" ui-sref="play-classic"><i class="icon ion-refresh"></i> </button>',
@@ -726,6 +753,24 @@ angular.module('sc.controllers', [])
     .controller('OptionCtrl',  ['$scope','$rootScope','CommentFactory',
     function($scope,$rootScope,CommentFactory) {
 
+      $scope.showCommentPopup = function() {
+        // An elaborate, custom popup
+        var myPopup = $ionicPopup.show({
+          //template: '<input type="text" style="padding: 0px 5px" ng-model="user.username">',
+          title: 'Comment saved',
+          subTitle: 'Thank you for helping us',
+        });
+
+        myPopup.then(function(res) {
+          console.log('Tapped!', res);
+          //
+        });
+
+        $timeout(function() {
+          myPopup.close(); //close the popup after 3 seconds for some reason
+        }, 2000);
+      };
+
       $scope.langues=[{value:"en",name:"English"},{value:"fr",name:"Français"}];
       setCardSize(-10);
         $scope.SaveOption=function(langue,comment){
@@ -734,8 +779,8 @@ angular.module('sc.controllers', [])
             // TODO redemarrer l'application en changeant la langue Evaris tu sais comment tu vas gerer ça
           }
           if(comment!=null){
-          //  alert("comment "+JSON.stringify(comment)+" player :"+$rootScope.player);
             CommentFactory.addComment(comment).then(function(data){
+              $scope.showCommentPopup();
             },function(msg){
               alert(msg);
             });
@@ -771,7 +816,13 @@ function formatTime(second){
 function saveScore(scope,time,ScoreFactory,RankFactory){
   if(scope.hit>0){
     ScoreFactory.addScore({click:scope.hit , speed:scope.hit/time, type : scope.type_jeu }).then(function(data){
-        //alert("addScoreZen "+JSON.stringify(data));
+        alert("add "+JSON.stringify(data));
+        if(data.isHighScore){
+          scope.isHighScore=true;
+        }
+        else{
+
+        }
       },
       function(data){
         //alert(JSON.stringify(data));

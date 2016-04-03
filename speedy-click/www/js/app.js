@@ -29,7 +29,7 @@ angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova'])
 
     if(window.cordova) {
       DBQuery.init();
-      $ionicLoading.show({ template: 'Mise a jour en cour....<br><ion-spinner icon="android"></ion-spinner>' });
+      $ionicLoading.show({ template: 'Mise a jour en cour<br><ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
       RankFactory.updateRanks().then(function(){
         $ionicLoading.hide();
         /*RankFactory.getRanks().then(function(data){
