@@ -617,6 +617,10 @@ span.option{
   margin-bottom: 2px;
 }
 
+.list-inset{
+  margin: 0px 10px;
+}
+
 .popup-sub-title{
   color: #cc0000;
 }

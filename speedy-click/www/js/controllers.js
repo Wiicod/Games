@@ -1,7 +1,7 @@
 var default_time=5;
 var default_zen_time_allow=3600;
 var default_time_bonus=3;
-var default_time_label="10s";
+var default_time_label="5s";
 var default_score_label="0 hit";
 var bonusSize=50;
 var scoreBonus=450;
@@ -81,6 +81,7 @@ angular.module('sc.controllers', [])
           //alert("rank "+JSON.stringify(ranks));
         },function(msg){
           alert(msg);
+          $ionicLoading.hide();
         });
 
         ScoreFactory.getScores().then(function(scores){
@@ -89,6 +90,7 @@ angular.module('sc.controllers', [])
           //alert("scores "+JSON.stringify(scores));
         },function(msg){
           alert(msg);
+          $ionicLoading.hide();
         });//*/
 
     }])
@@ -742,6 +744,7 @@ function getCoordonnees(min,max){
 function setCardSize(x){
   var size=ny-93-44-100-x;
   $(".card-scroll").css('height',size+'px');
+  $("#textarea").css('height',(size-162)+'px');
 }
 
 function formatTime(second){
