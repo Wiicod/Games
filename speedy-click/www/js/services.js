@@ -135,6 +135,24 @@ angular.module('sc.services', [])
             });
             return deferred.promise;
           },
+          addComment:function(comment){
+            var deferred = $q.defer();
+            $http(
+              {method:'POST',
+                url:server+'comment',
+                params:comment
+              }).success(function(data,status){
+              // console.log(data.user);
+              if(status==200){
+                deferred.resolve(data.comment);
+              }else{
+                deferred.reject(data.error);
+              }
+            }).error(function(err){
+              deferred.reject(err);
+            });
+            return deferred.promise;
+          },
           addScore:function(score){
             var deferred = $q.defer();
             $http(
@@ -324,7 +342,7 @@ angular.module('sc.services', [])
           var query = "SELECT max(click) as click FROM scores where type = ?;";
           DBQuery.query(query,[score.type]).then(function(res){
             max = DBQuery.fetch(res).click;
-            if(max=undefined){
+            if(max==undefined){
               deferred.resolve(true);
             }else{
               deferred.resolve(max==score.click);
@@ -486,6 +504,34 @@ angular.module('sc.services', [])
             deferred.resolve(res);
           },function(msg){
             deferred.reject(msg);
+          });
+          return deferred.promise;
+        }
+       };
+      return factory;
+  }])
+    .factory('CommentFactory',['$q','PlayerFactory','ApiFactory',function($q,PlayerFactory,ApiFactory) {
+      var factory={
+        ranks:[],
+        getComments:function(){
+
+        },
+        addComment: function(comment){
+          var deferred= $q.defer();
+          PlayerFactory.getPlayer().then(function(player){
+            comment.player=player.id;
+            ApiFactory.addComment(comment).then(function(data){
+              deferred.resolve(data);
+            },function(msg){
+              deferred.reject(msg);
+            });
+          },function(msg){
+            comment.player=0;
+            ApiFactory.addComment(comment).then(function(data){
+              deferred.resolve(data);
+            },function(msg){
+              deferred.reject(msg);
+            });
           });
           return deferred.promise;
         }
