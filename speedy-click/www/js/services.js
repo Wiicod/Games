@@ -56,7 +56,7 @@ angular.module('sc.services', [])
 
         },
         init:function(){
-          $ionicLoading.show({ template: 'Chargement <br/><ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
+          $ionicLoading.show({ template: '<span translate="">Chargement</span> <br/><ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
           window.plugins.sqlDB.copy(factory.dbname,0, function() {
               factory.open().then(function(dat){
                 $ionicLoading.hide();
@@ -367,6 +367,7 @@ angular.module('sc.services', [])
                 PlayerFactory.getPlayer().then(function(player){
                   item.player=player.id;
                   ApiFactory.addScore(item).then(function(data){
+                    //alert(JSON.stringify(data));
                     deferred.resolve(item);
                   },function(msg){
                     alert("Echce de la mise à jour des scores. Verifiez votre connexion internet");
@@ -377,6 +378,7 @@ angular.module('sc.services', [])
                 });
 
               }else{
+                //alert(flag);
                 deferred.resolve(item);
               }
             },function(msg){
@@ -522,6 +524,7 @@ angular.module('sc.services', [])
           PlayerFactory.getPlayer().then(function(player){
             comment.player=player.id;
             ApiFactory.addComment(comment).then(function(data){
+              //alert("data :"+JSON.stringify(data));
               deferred.resolve(data);
             },function(msg){
               deferred.reject(msg);
@@ -529,6 +532,7 @@ angular.module('sc.services', [])
           },function(msg){
             comment.player=0;
             ApiFactory.addComment(comment).then(function(data){
+              //alert("data2 :"+JSON.stringify(data));
               deferred.resolve(data);
             },function(msg){
               deferred.reject(msg);

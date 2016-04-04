@@ -10,7 +10,7 @@
     <div class="hero slide-up" >
       <div class="content">
         <!--<div class="avatar"><i class="icon ion-trophy"></i></div>-->
-        <h5 class="title-game" style="color: #fff;"><span>S</span>core</h5>
+        <h5 class="title-game" style="color: #fff;" translate=""><span>S</span>core</h5>
         <hr class="divider-short">
       </div>
     </div>
@@ -40,11 +40,11 @@
 
        <div class="card-scroll">
          <div ng-if="filtre.flag_area" class="animate-if">
-           <span class="col">Your personnal records</span>
+           <span class="col" translate="">Your personnal records</span>
            <div  class="item row " style="padding: 8px;" >
-             <span class="col">Rank</span>
-             <span class="col">Speed</span>
-             <span class="col">Hits</span>
+             <span class="col" translate="">Rank</span>
+             <span class="col" translate="">Speed</span>
+             <span class="col" translate="">Hits</span>
              </span>
            </div>
            <div  class="item row " style="padding: 2px;" ng-repeat="s in scores| orderBy:'-click' | filter:{type:filtre.type}">
@@ -61,13 +61,13 @@
 
        </div>
        <div ng-if="!filtre.flag_area" class="animate-if">
-         <span class="col">Words Ranking</span>
+         <span class="col" translate="">World Ranking</span>
          <div  class="item row " style="padding: 8px;" >
-           <span class="col">Rank</span>
-           <span class="col">Name</span>
+           <span class="col" translate="">Rank</span>
+           <span class="col" translate="">Name</span>
            <!--<span class="col">Country</span>-->
-           <span class="col" ng-click="frank_order('click')">Hits <i ng-if="filtre.rank_order=='click'" class="icon ion-arrow-graph-up-right"></i></span>
-           <span class="col" ng-click="frank_order('speed')">Speed <i ng-if="filtre.rank_order=='speed'" class="icon ion-arrow-graph-up-right"></i></span>
+           <span class="col" ng-click="frank_order('click')"><span translate="">Hits</span> <i ng-if="filtre.rank_order=='click'" class="icon red ion-arrow-graph-up-right"></i></span>
+           <span class="col" ng-click="frank_order('speed')"><span translate="">Speed</span> <i ng-if="filtre.rank_order=='speed'" class="icon red ion-arrow-graph-up-right"></i></span>
         </span>
          </div>
          <!--<div  class="item row statsrank " scroll-to style="padding: 2px;" ng-repeat="r in [] | range:100" ng-class="showActive($index)">-->
@@ -95,10 +95,10 @@
        </div>
 
        <p class="text-center padding-top">
-         <button class="button" style="background: #cc0000; color: white;" ng-click="refreshScore()">
+         <button class="button" style="background: #cc0000; color: white;" ng-click="refreshScore()" translate="">
            Refresh
          </button>
-         <button class="button" style="background: #cc0000; color: white;" ui-sref="home">
+         <button class="button" style="background: #cc0000; color: white;" ui-sref="home" translate="">
            Back
          </button>
        </p>

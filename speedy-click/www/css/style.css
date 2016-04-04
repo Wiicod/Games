@@ -217,6 +217,12 @@ footer.page-footer {
 .gold-bg{
   background-color: #B69E40 !important;
 }
+.red{
+  color: #B69E40 !important;
+}
+.red-bg{
+  background-color: #B69E40 !important;
+}
 .btn-ptc {
   background-color: #1C2331 !important;
 }
@@ -622,7 +628,7 @@ span.option{
 }
 
 .popup-sub-title{
-  color: #cc0000;
+  color: #B69E40;
 }
 
 .activeMarkClass { color: red; }

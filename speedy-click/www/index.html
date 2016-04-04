@@ -9,7 +9,7 @@
     <link href="css/grid.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/hexagon.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -17,10 +17,12 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-gettext/dist/angular-gettext.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="js/ng-cordova.min.js"></script>
     <script src="cordova.js"></script>
+    <script src="js/translation.js"></script>
 
     <!-- your app's js -->
     <script src="js/jquery.min.js"></script>
@@ -42,7 +44,7 @@
     <div class="bar bar-footer" ng-controller="SCCtrl" style="background: black">
       <div class="container-fluid" style="margin: 0 auto">
         <hr class="divider-short" style="margin-bottom: 2px;margin-top: 2px;">
-        By <a href="{{wiicod_link}}"> {{wiicod_name}} </a>
+        <span translate="">By</span> <a href="{{wiicod_link}}"> {{wiicod_name}} </a>
       </div>
     </div>
 
