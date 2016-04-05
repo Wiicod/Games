@@ -1,7 +1,7 @@
 var default_time=5;
 var default_zen_time_allow=3600;
 var default_time_bonus=3;
-var default_time_label="10s";
+var default_time_label="5s";
 var default_score_label="0 hit";
 var bonusSize=50;
 var scoreBonus=450;
@@ -21,12 +21,13 @@ angular.module('sc.controllers', [])
     function($scope,RankFactory,ScoreFactory,$ionicLoading){
     setCardSize(20);
     $scope.refreshScore=function(){
-      $ionicLoading.show({ template: 'Chargement des scores....<br><ion-spinner icon="android"></ion-spinner>' });
+      $ionicLoading.show({ template: '<span translate="">Chargement des scores</span><br><ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
       RankFactory.getRanks().then(function(ranks){
         $scope.ranks = ranks;
         $ionicLoading.hide();
         //alert("rank "+JSON.stringify(ranks));
       },function(msg){
+        $ionicLoading.hide();
         alert(msg);
       });
 
@@ -35,6 +36,7 @@ angular.module('sc.controllers', [])
         $ionicLoading.hide();
         //alert("scores "+JSON.stringify(scores));
       },function(msg){
+        $ionicLoading.hide();
         alert(msg);
       });//*/
     }
@@ -86,13 +88,14 @@ angular.module('sc.controllers', [])
         ];
        //*/
         //* cas reels
-        $ionicLoading.show({ template: 'Chargement...<br><ion-spinner icon="android"></ion-spinner>' });
+      $ionicLoading.show({ template: '<span translate="">Chargement des scores</span><br><ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
         RankFactory.getRanks().then(function(ranks){
           $scope.ranks = ranks;
           $ionicLoading.hide();
           //alert("rank "+JSON.stringify(ranks));
         },function(msg){
           alert(msg);
+          $ionicLoading.hide();
         });
 
         ScoreFactory.getScores().then(function(scores){
@@ -100,6 +103,7 @@ angular.module('sc.controllers', [])
           $ionicLoading.hide();
         },function(msg){
           alert(msg);
+          $ionicLoading.hide();
         });//*/
 
     }])
@@ -150,6 +154,7 @@ angular.module('sc.controllers', [])
         }
       });
     };
+
       //alert("ici");
       PlayerFactory.getPlayerInformation();
 
@@ -171,12 +176,36 @@ angular.module('sc.controllers', [])
           alert(JSON.stringify(data));
         })
 
-
+      $scope.showMultiPopup = function() {
+        // An elaborate, custom popup
+        var myPopup = $ionicPopup.show({
+          template: '<p style="text-align: justify; font-size: 10px" translate="">leave us a comment for describe what you will like to see in this mode.</p>',
+          title: '<span translate="">Multi player mode</span>',
+          subTitle: '<span translate="">Coming soon</span>',
+          buttons: [
+            {
+              text: 'Comment',
+              type: 'btn-gold',
+              onTap: function(e) {
+                myPopup.close();
+                $location.path("option");
+              }
+            },
+            {
+              text: 'Close',
+              type: 'btn-gold',
+              onTap: function(e) {
+                myPopup.close();
+              }
+            }
+          ]
+        });
+      };
       $scope.showWellcomePopup = function(username) {
       // An elaborate, custom popup
       var myPopup = $ionicPopup.show({
         //template: '<input type="text" style="padding: 0px 5px" ng-model="user.username">',
-        title: 'Wellcome <span style="color:#cc0000">'+username+'</span>'
+        title: '<span translate="">Wellcome </span><span class="red">'+username+'</span>'
         //subTitle: 'Please use normal things',
       });
 
@@ -195,13 +224,13 @@ angular.module('sc.controllers', [])
       // An elaborate, custom popup
       var myPopup = $ionicPopup.show({
         template: '<input type="text" style="padding: 0px 5px" ng-model="user.username">',
-        title: 'Enter your username',
+        title: '<span translate="">Enter your username</span>',
         //subTitle: 'Please use normal things',
         scope: $scope,
         buttons: [
           //{ text: 'Cancel' },
           {
-            text: '<b>Save</b>',
+            text: '<span translate="">Save</span>',
             type: 'btn-gold',
             onTap: function(e) {
               if (!$scope.user.username) {
@@ -211,7 +240,7 @@ angular.module('sc.controllers', [])
                 // verification si le user la n'exite pas deja
                 PlayerFactory.addPlayer({username:$scope.user.username}).then(function(data){
                   //alert(JSON.stringify(data));
-                    $scope.showWellcomePopup(data.username);
+                    $scope.showWellcomePopup($scope.user.username);
                 },
                 function(data){
                   alert(JSON.stringify(data));
@@ -333,10 +362,10 @@ angular.module('sc.controllers', [])
           else{
             state=false;
             if($scope.hit1>$scope.hit2){
-              $scope.winner="Winner is <span style='color: #cc0000; font-weight: bold;'>Player 1";
+              $scope.winner="<span translate=''>Winner is</span> <span class='red' translate=''>Player 1</span>";
             }
             else if($scope.hit1<$scope.hit2){
-              $scope.winner="Winner is <span style='color: #cc0000; font-weight: bold;'>Player 2";
+              $scope.winner="<span translate=''>Winner is</span> <span class='red' translate=''>Player 2</span>";
             }
             else {
               $scope.winner="Egality";
@@ -458,9 +487,9 @@ angular.module('sc.controllers', [])
       $scope.showStopZenPopup = function() {
         $scope.StopChrono();
         var myPopup = $ionicPopup.show({
-          template: '<p class="text-center">Your score : '+$scope.score+'</p>',
-          title: 'Temps de jeu depasse',
-          subTitle: 'Le temps de jeu permis en ce mode est de une heure',
+          template: '<p class="text-center"><span translate="">Your score :</span> '+$scope.score+'</p>',
+          title: '<span translate="">Temps de jeu depasse</span>',
+          subTitle: '<span translate="">Le temps de jeu permis en ce mode est d\'une heure</span>',
           scope: $scope,
           buttons: [
             //{ text: 'Cancel' },
@@ -565,7 +594,7 @@ angular.module('sc.controllers', [])
           }
           var confirmPopup = $ionicPopup.alert({
             title: 'Score : '+$scope.score,
-            //template: 'Score : '+$scope.score,
+            template: '<span ng-if="isHighScore" translate="">Your are the new <span class="red">Speed Master</span>!!!</span>',
             buttons: [
               {
                 text: '<button class="button btn-calmed" ui-sref="play-classic"><i class="icon ion-refresh"></i> </button>',
@@ -721,8 +750,36 @@ angular.module('sc.controllers', [])
 
     }])
 
-    .controller('OptionCtrl',  ['$scope','$rootScope','CommentFactory',
-    function($scope,$rootScope,CommentFactory) {
+    .controller('OptionCtrl',  ['$scope','$rootScope','CommentFactory','$ionicPopup','$location','$ionicLoading',
+    function($scope,$rootScope,CommentFactory,$ionicPopup,$location,$ionicLoading) {
+
+      $scope.showCommentPopup = function() {
+        // An elaborate, custom popup
+        var myPopup = $ionicPopup.show({
+          //template: '<input type="text" style="padding: 0px 5px" ng-model="user.username">',
+          title: '<span translate="">Comment saved</span>',
+          subTitle: '<span translate="">Thank you for helping us</span>',
+          buttons: [
+            {
+              text: '<button class="button" ui-sref="play-zen">Close </button>',
+              type: ' btn-gold',
+              onTap: function(e) {
+                $location.path("home");
+              }
+            }
+          ]
+        });
+
+        myPopup.then(function(res) {
+          console.log('Tapped!', res);
+          myPopup.close();
+          //
+        });
+
+        //$timeout(function() {
+        //  myPopup.close(); //close the popup after 3 seconds for some reason
+        //}, 2000);
+      };
 
       $scope.langues=[{value:"en",name:"English"},{value:"fr",name:"Français"}];
       setCardSize(-10);
@@ -732,9 +789,12 @@ angular.module('sc.controllers', [])
             // TODO redemarrer l'application en changeant la langue Evaris tu sais comment tu vas gerer ça
           }
           if(comment!=null){
-          //  alert("comment "+JSON.stringify(comment)+" player :"+$rootScope.player);
+            $ionicLoading.show({ template: '<ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
             CommentFactory.addComment(comment).then(function(data){
+              $ionicLoading.hide();
+              $scope.showCommentPopup();
             },function(msg){
+              $ionicLoading.hide();
               alert(msg);
             });
           }
@@ -750,6 +810,7 @@ function getCoordonnees(min,max){
 function setCardSize(x){
   var size=ny-93-44-100-x;
   $(".card-scroll").css('height',size+'px');
+  $("#textarea").css('height',(size-162)+'px');
 }
 
 function formatTime(second){
@@ -768,7 +829,13 @@ function formatTime(second){
 function saveScore(scope,time,ScoreFactory,RankFactory){
   if(scope.hit>0){
     ScoreFactory.addScore({click:scope.hit , speed:scope.hit/time, type : scope.type_jeu }).then(function(data){
-        //alert("addScoreZen "+JSON.stringify(data));
+        //alert("add "+JSON.stringify(data));
+        if(data.isHighScore){
+          scope.isHighScore=true;
+        }
+        else{
+
+        }
       },
       function(data){
         //alert(JSON.stringify(data));

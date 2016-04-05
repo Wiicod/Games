@@ -56,7 +56,7 @@ angular.module('sc.services', [])
 
         },
         init:function(){
-          $ionicLoading.show({ template: 'Chargement....<ion-spinner icon="android"></ion-spinner>' });
+          $ionicLoading.show({ template: '<span translate="">Chargement</span> <br/><ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
           window.plugins.sqlDB.copy(factory.dbname,0, function() {
               factory.open().then(function(dat){
                 $ionicLoading.hide();
@@ -364,19 +364,22 @@ angular.module('sc.services', [])
             item.id=res.insertId;
             factory.isNewHighScore(item).then(function(flag){
               if(flag){
+                item.isHighScore=true; // me permet de savoir quand c'est le high
                 PlayerFactory.getPlayer().then(function(player){
                   item.player=player.id;
                   ApiFactory.addScore(item).then(function(data){
+                    //alert(JSON.stringify(data));
                     deferred.resolve(item);
                   },function(msg){
-                   // alert("Impossible score non mis a jour");
+                    alert("Echce de la mise à jour des scores. Verifiez votre connexion internet");
                   });
 
                 },function(msg){
-                  //alert(msg);
+                  alert(msg);
                 });
 
               }else{
+                //alert(flag);
                 deferred.resolve(item);
               }
             },function(msg){
@@ -385,7 +388,7 @@ angular.module('sc.services', [])
             });
 
           },function(msg){
-            alert("echec d enregistrement du score");
+            alert("echec d'enregistrement du score");
             deferred.reject(msg);
           });
           return deferred.promise;
@@ -400,7 +403,7 @@ angular.module('sc.services', [])
               ApiFactory.addScore(res).then(function(data){
 
               },function(msg){
-               // alert("Impossible score non mis a jour");
+               // alert("Impossible score non mis à jour");
               });
 
             },function(msg){
@@ -493,7 +496,7 @@ angular.module('sc.services', [])
             });
           },
             function(msg){
-            deferred.reject("Veuillez vous connecter pour obtenir les mise a jour !")
+            deferred.reject("Veuillez vous connecter pour obtenir les mise à jour !")
           });
           return deferred.promise;
         },
@@ -522,6 +525,7 @@ angular.module('sc.services', [])
           PlayerFactory.getPlayer().then(function(player){
             comment.player=player.id;
             ApiFactory.addComment(comment).then(function(data){
+              //alert("data :"+JSON.stringify(data));
               deferred.resolve(data);
             },function(msg){
               deferred.reject(msg);
@@ -529,6 +533,7 @@ angular.module('sc.services', [])
           },function(msg){
             comment.player=0;
             ApiFactory.addComment(comment).then(function(data){
+              //alert("data2 :"+JSON.stringify(data));
               deferred.resolve(data);
             },function(msg){
               deferred.reject(msg);

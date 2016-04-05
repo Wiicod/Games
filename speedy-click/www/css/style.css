@@ -217,6 +217,12 @@ footer.page-footer {
 .gold-bg{
   background-color: #B69E40 !important;
 }
+.red{
+  color: #B69E40 !important;
+}
+.red-bg{
+  background-color: #B69E40 !important;
+}
 .btn-ptc {
   background-color: #1C2331 !important;
 }
@@ -502,7 +508,7 @@ button.btn-floating {
   color:#000;
 }
 .score{
-  float: right;
+  /*float: right;*/
   color: #cc0000;
 }
 
@@ -617,8 +623,12 @@ span.option{
   margin-bottom: 2px;
 }
 
+.list-inset{
+  margin: 0px 10px;
+}
+
 .popup-sub-title{
-  color: #cc0000;
+  color: #B69E40;
 }
 
 .activeMarkClass { color: red; }

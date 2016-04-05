@@ -5,7 +5,7 @@
     <div class="hero slide-up" >
       <div class="content">
         <!--<div class="avatar"><i class="icon ion-gear-a"></i></div>-->
-        <h5 class="title-game" style="color: #fff;"><span>O</span>ption</h5>
+        <h5 class="title-game" style="color: #fff;" translate=""><span>O</span>ption</h5>
         <hr class="divider-short">
       </div>
     </div>
@@ -14,29 +14,29 @@
       <form class="list list-inset" ng-submit="SaveOption(langue,comment)">
         <div class="card-scroll">
           <label class="item item-input item-select">
-            <span class="input-label">Language </span>
+            <span class="input-label" translate="">Language </span>
             <select ng-model="langue" ng-options="l.value as l.name for l in langues">
-              <option selected="selected">Select Priority</option>
+              <option selected="selected" translate="">Select Priority</option>
             </select>
           </label>
           <div class="gold-bg padding">
-            <div class="item item-divider gold-bg text-center">
-              Your suggestions
+            <div class="item item-divider gold-bg text-center" translate="">
+              Your comments
             </div>
             <label class="item item-input">
               <span class="input-label">title : </span>
               <input type="text" ng-model="comment.title"/>
             </label>
             <label class="item item-input">
-              <textarea placeholder="Comments" ng-model="comment.description"></textarea>
+              <textarea id="textarea" placeholder="{{'Comments' | translate}}" ng-model="comment.description"></textarea>
             </label>
           </div>
         </div>
         <p class="padding-top">
-          <button class="button" style="background: #cc0000; color: white;" ui-sref="home">
+          <button class="button" style="background: #cc0000; color: white;" ui-sref="home" translate="">
             Back
           </button>
-          <button class="button" style="background: #cc0000; color: white; float: right" type="submit">
+          <button class="button" style="background: #cc0000; color: white; float: right" type="submit" translate="">
             Save
           </button>
         </p>
