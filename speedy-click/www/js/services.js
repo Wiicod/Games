@@ -341,16 +341,17 @@ angular.module('sc.services', [])
           var deferred = $q.defer();
           var query = "SELECT max(click) as click FROM scores where type = ?;";
           DBQuery.query(query,[score.type]).then(function(res){
+            var r;
             max = DBQuery.fetch(res).click;
             if(max==undefined){
               deferred.resolve(true);
             }else{
-              deferred.resolve(max==score.click);
+             r =max==score.click;
+              deferred.resolve(r);
             }
           },function(err){
             console.log(err);
           });
-
 
           return deferred.promise;
         },
@@ -472,7 +473,7 @@ angular.module('sc.services', [])
             DBQuery.query(query).then(function(res){
               for(var i=0;i<data.length;i++){
                 item={
-                  id:data[i].player_id,
+                  id:data[i].id,
                   username:data[i].player.username,
                   country:data[i].player.country,
                   city:data[i].player.city,
