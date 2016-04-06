@@ -495,7 +495,7 @@ angular.module('sc.services', [])
             });
           },
             function(msg){
-            deferred.reject("Veuillez vous connecter pour obtenir les mise à jour !")
+            deferred.reject("Veuillez vous connecter pour obtenir les mises à jour !")
           });
           return deferred.promise;
         },

@@ -108,10 +108,27 @@ angular.module('sc.controllers', [])
 
     }])
 
-  .controller('HomeCtrl', ['$scope','$ionicPopup','$location','$timeout','PlayerFactory','$rootScope',
-    function($scope,$ionicPopup,$location,$timeout,PlayerFactory,$rootScope) {
+  .controller('HomeCtrl', ['$scope','$ionicPopup','$location','$timeout','PlayerFactory','$rootScope','$interval',
+    function($scope,$ionicPopup,$location,$timeout,PlayerFactory,$rootScope,$interval) {
 
       $scope.player={};
+
+      $scope.rotate=function(){
+        $('#container').removeClass('pulse');
+        if($('#container').hasClass('bounce')){
+          $('#container').removeClass('bounce');
+        }
+        else {
+          $('#container').addClass('bounce');
+        }
+        //
+      }
+      $timeout(function() {
+        $interval(function(){
+          $scope.rotate();
+        },30000);
+      },30000)
+
 
     $(document).ready(function() {
       var x=(ny-95)/3;

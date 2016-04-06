@@ -14,6 +14,8 @@ angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova','gettex
 .run(function($ionicPlatform,$ionicLoading,DBQuery,RankFactory,ScoreFactory,$rootScope,$interval,gettextCatalog) {
   $ionicPlatform.ready(function() {
 
+    //ionic.Platform.fullScreen(true, false);
+
     /* Translate */
     gettextCatalog.currentLanguage=navigator.language;
     gettextCatalog.currentLanguage="en";
