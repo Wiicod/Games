@@ -126,7 +126,7 @@ angular.module('sc.controllers', [])
       $timeout(function() {
         $interval(function(){
           $scope.rotate();
-        },30000);
+        },10000);
       },30000)
 
 
