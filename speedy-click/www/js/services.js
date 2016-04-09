@@ -337,11 +337,28 @@ angular.module('sc.services', [])
 
           return deferred.promise;
         },
+        exist:function(score){
+          var deferred = $q.defer();
+          var query = "SELECT * FROM scores where type = ? and click= ?;";
+          DBQuery.query(query,[score.type,score.click]).then(function(res){
+            res = DBQuery.fetchAll(res);
+            if(res.length >0){
+              deferred.resolve(true);
+            }else{
+              deferred.resolve(false);
+            }
+          },function(err){
+            console.log(err);
+          });
+
+          return deferred.promise;
+        },
         isNewHighScore:function(score){
           var deferred = $q.defer();
           var query = "SELECT max(click) as click FROM scores where type = ?;";
           DBQuery.query(query,[score.type]).then(function(res){
             var r;
+            alert(JSON.stringify(score)+"scontrer"+JSON.stringify(DBQuery.fetch(res)));
             max = DBQuery.fetch(res).click;
             if(max==undefined){
               deferred.resolve(true);
@@ -357,40 +374,45 @@ angular.module('sc.services', [])
         },
         addScore: function(item){
           var deferred= $q.defer();
-          var query = "INSERT INTO scores (click,speed,type,created_at,updated_at) VALUES (?,?,?,?,?)";
-          var d = new Date();
-          var param = [item.click,item.speed,item.type, d.toString(), d.toString()];
-          DBQuery.query(query,param).then(function(res){
-            item.id=res.insertId;
-            factory.isNewHighScore(item).then(function(flag){
-              if(flag){
-                item.isHighScore=true; // me permet de savoir quand c'est le high
-                PlayerFactory.getPlayer().then(function(player){
-                  item.player=player.id;
-                  ApiFactory.addScore(item).then(function(data){
-                    //alert(JSON.stringify(data));
-                    deferred.resolve(item);
-                  },function(msg){
-                    alert("Echce de la mise à jour des scores. Verifiez votre connexion internet");
-                  });
+          factory.exist(item).then(function(fexist){
+            if(!fexist){
+              var query = "INSERT INTO scores (click,speed,type,created_at,updated_at) VALUES (?,?,?,?,?)";
+              var d = new Date();
+              var param = [item.click,item.speed,item.type, d.toString(), d.toString()];
+              DBQuery.query(query,param).then(function(res){
+                item.id=res.insertId;
+                factory.isNewHighScore(item).then(function(flag){
+                  if(flag){
+                    item.isHighScore=true; // me permet de savoir quand c'est le high
+                    PlayerFactory.getPlayer().then(function(player){
+                      item.player=player.id;
+                      ApiFactory.addScore(item).then(function(data){
+                        //alert(JSON.stringify(data));
+                        deferred.resolve(item);
+                      },function(msg){
+                        alert("Echce de la mise à jour des scores. Verifiez votre connexion internet");
+                      });
 
+                    },function(msg){
+                      alert(msg);
+                    });
+
+                  }else{
+                    //alert(flag);
+                    deferred.resolve(item);
+                  }
                 },function(msg){
-                  alert(msg);
+                  deferred.resolve(item);
+                  console.error(msg);
                 });
 
-              }else{
-                //alert(flag);
-                deferred.resolve(item);
-              }
-            },function(msg){
-              deferred.resolve(item);
-              console.error(msg);
-            });
-
-          },function(msg){
-            alert("echec d'enregistrement du score");
-            deferred.reject(msg);
+              },function(msg){
+                alert("echec d'enregistrement du score");
+                deferred.reject(msg);
+              });
+            }
           });
+
           return deferred.promise;
         },
         getMaxScore : function(type){

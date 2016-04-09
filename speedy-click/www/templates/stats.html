@@ -52,7 +52,7 @@
              {{$index+1}}
            </span>
         <span class="col">
-          {{s.speed}}
+          {{s.speed  | arrondie:2}}
         </span><span class="col">
           {{s.click}}
         </span>
@@ -85,7 +85,7 @@
             {{r.click}}
           </span>
            <span class="col  ">
-            {{r.speed}}
+            {{r.speed | arrondie:2}}
           </span>
 
            </div>

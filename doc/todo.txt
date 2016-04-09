@@ -1,3 +1,6 @@
 1- L'internationalisation
-2- Rediger how to play
 3- Fixer la partie multijoueur
+
+
+4- un fai le mise à jour automatique du rank mondial dan le mode zen ? et la barre de chargement du nombre
+le points qui le separe de celui ki est devant lui ? les premiers doivents avoir des couronne à cote de leurs nom
