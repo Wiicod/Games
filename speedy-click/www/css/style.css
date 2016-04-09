@@ -194,17 +194,17 @@ footer.page-footer {
 
 .btn-gold-text{
   background: transparent;
-  /*color: #B69E40;*/
+  /*color: #CFAE2B;*/
   color: #fff !important;
   font-size: 20px !important;
   font-weight: bold !important;
 }
 .btn-gold-text:hover{
-  background: #B69E40;
+  background: #CFAE2B;
   color: #cc0000;
 }
 .btn-gold{
-  background-color: #B69E40 !important;
+  background-color: #CFAE2B !important;
   color: #cc0000 !important;
   font-family: "Perfect dark" !important;
 }
@@ -212,16 +212,17 @@ footer.page-footer {
   background-color: rgb(79,72,44)!important;
 }
 .gold{
-  color: #B69E40 !important;
+  color: #CFAE2B !important;
 }
 .gold-bg{
-  background-color: #B69E40 !important;
+  background-color: #CFAE2B !important;
 }
 .red{
-  color: #B69E40 !important;
+  color: #cc0000 !important;
+  color: #CFAE2B !important;
 }
 .red-bg{
-  background-color: #B69E40 !important;
+  background-color: #CFAE2B !important;
 }
 .btn-ptc {
   background-color: #1C2331 !important;
@@ -530,7 +531,7 @@ button.btn-floating {
 }
 
 .bonus.gold{
-  background: #B69E40;
+  background: #CFAE2B;
 }
 .bonus.white{
   background: #fff;
@@ -560,8 +561,8 @@ button.btn-floating {
 }
 
 .ligne .toggle .track, .toggle input:checked + .track{
-  background: #B69E40;
-  border-color: #B69E40;
+  background: #CFAE2B;
+  border-color: #CFAE2B;
 }
 
 span.option{
@@ -628,7 +629,7 @@ span.option{
 }
 
 .popup-sub-title{
-  color: #B69E40;
+  color: #CFAE2B;
 }
 
 .activeMarkClass { color: red; }

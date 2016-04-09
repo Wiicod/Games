@@ -1,0 +1,6 @@
+1- les scores zen du serveur ne s'affiche pas dans la vue
+2- les scores ne sont toujours pas update dans le phone apres l'enregistrement d'un score
+3- l'affichage de la speed n'est tjr pas bonne il faut 1 chiffre apres la virgule
+4- quand flag et false rien ne se passe. aucun enregistrement
+5- revoir le message qui s'affiche quand le statut de la requette est different de 200.
+   actuellemetn quand c'est code 403 ça renvoi l'erreur du serveur
