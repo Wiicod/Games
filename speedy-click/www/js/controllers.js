@@ -67,7 +67,7 @@ angular.module('sc.controllers', [])
       $scope.$watch('filtre.flag_area',function(){
         $scope.filtre.area = $scope.filtre.flag_area?"local":"world";
       });
-       /* Pour les test
+       /* Pour les test*/
        $scope.scores=[
           {"player":"Zephyr","click":4125,"type":"zen","speed":890},
           {"player":"Zephyr","click":4125,"type":"zen","speed":445},
@@ -87,7 +87,7 @@ angular.module('sc.controllers', [])
           {"rank":4,"username":"Quentin","click":125,"country":"France","speed":4,type:"classic"}
         ];
        //*/
-        //* cas reels
+        /* cas reels
       $ionicLoading.show({ template: '<span translate="">Chargement des scores</span><br><ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
         RankFactory.getRanks().then(function(ranks){
           $scope.ranks = ranks;
@@ -113,21 +113,21 @@ angular.module('sc.controllers', [])
 
       $scope.player={};
 
-      $scope.rotate=function(){
-        $('#container').removeClass('pulse');
-        if($('#container').hasClass('bounce')){
-          $('#container').removeClass('bounce');
-        }
-        else {
-          $('#container').addClass('bounce');
-        }
-        //
-      }
-      $timeout(function() {
-        $interval(function(){
-          $scope.rotate();
-        },10000);
-      },30000)
+      //$scope.rotate=function(){
+      //  $('#container').removeClass('pulse');
+      //  if($('#container').hasClass('bounce')){
+      //    $('#container').removeClass('bounce');
+      //  }
+      //  else {
+      //    $('#container').addClass('bounce');
+      //  }
+      //  //
+      //}
+      //$timeout(function() {
+      //  $interval(function(){
+      //    $scope.rotate();
+      //  },10000);
+      //},30000)
 
 
     $(document).ready(function() {
@@ -799,7 +799,7 @@ angular.module('sc.controllers', [])
       };
 
       $scope.langues=[{value:"en",name:"English"},{value:"fr",name:"Français"}];
-      setCardSize(-10);
+      setCardSize(-30);
         $scope.SaveOption=function(langue,comment){
           console.info(comment,langue, $rootScope.player);
           if(langue!=null){
@@ -825,9 +825,10 @@ function getCoordonnees(min,max){
 }
 
 function setCardSize(x){
-  var size=ny-93-44-100-x;
+  var size=ny-93-44-100-x+30;
   $(".card-scroll").css('height',size+'px');
   $("#textarea").css('height',(size-162)+'px');
+  $("#textarea").css('max-height',(size-162)+'px');
 }
 
 function formatTime(second){

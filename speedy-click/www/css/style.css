@@ -330,8 +330,8 @@ footer.page-footer {
 }
 
 hr {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  /*margin-top: 20px;*/
+  /*margin-bottom: 20px;*/
   border: 0;
   border-top: 1px solid #eee;
 }
@@ -362,7 +362,7 @@ hr {
   line-height: 110%;
   margin: 0.82rem 0 0.656rem 0
 }
-.title-game span{
+.title-game:first-letter{
   font-size: 50px;
 }
 
@@ -459,6 +459,7 @@ button.btn-floating {
   box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
   color: #fff;
   height: 100px;
+  height: 70px;
   position: relative;
   text-align: center;
   -webkit-transition: all 1s cubic-bezier(.55,0,.1,1);
@@ -582,7 +583,10 @@ span.option{
   border:1px solid #eee;
   padding:10px;
 }
-
+.animate-if i{
+ color: #cc0000;
+  font-size: 15px;
+}
 .animate-if.ng-enter, .animate-if.ng-leave {
   transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 }
@@ -633,3 +637,14 @@ span.option{
 }
 
 .activeMarkClass { color: red; }
+
+.ten-first{
+  color: #c4a429;
+  font-weight: bold;
+}
+
+.first{
+  color: #cc0000;
+}
+
+.row + .row{margin-top: 0px;}

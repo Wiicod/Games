@@ -10,7 +10,7 @@
     <div class="hero slide-up" >
       <div class="content">
         <!--<div class="avatar"><i class="icon ion-trophy"></i></div>-->
-        <h5 class="title-game" style="color: #fff;" translate=""><span>S</span>core</h5>
+        <h5 class="title-game" style="color: #fff;" translate="">Score</h5>
         <hr class="divider-short">
       </div>
     </div>
@@ -47,15 +47,15 @@
              <span class="col" translate="">Hits</span>
              </span>
            </div>
-           <div  class="item row " style="padding: 2px;" ng-repeat="s in scores| orderBy:'-click' | filter:{type:filtre.type}">
-           <span class="col">
-             {{$index+1}}
-           </span>
-        <span class="col">
-          {{s.speed}}
-        </span><span class="col">
-          {{s.click}}
-        </span>
+           <div  class="item row " style="padding: 2px;" ng-repeat="s in scores| orderBy:'-click' | filter:{type:filtre.type}"ng-class="{'ten-first':$index<10,'first':$index==0}">
+             <span class="col">
+               {{($index+1) | ordinal}}
+             </span>
+            <span class="col">
+              {{s.speed}}
+            </span><span class="col">
+              {{s.click}}
+            </span>
            </div>
 
 
@@ -71,7 +71,7 @@
         </span>
          </div>
          <!--<div  class="item row statsrank " scroll-to style="padding: 2px;" ng-repeat="r in [] | range:100" ng-class="showActive($index)">-->
-         <div  class="item row statsrank " scroll-to style="padding: 2px;" ng-repeat="r in ranks |orderBy:'-'+filtre.rank_order | filter:{type:filtre.type}" ng-class="showActive($index)">
+         <div  class="item row statsrank " scroll-to style="padding: 2px;" ng-repeat="r in ranks |orderBy:'-'+filtre.rank_order | filter:{type:filtre.type}" ng-class="showActive($index),{'ten-first':$index<10}" ng-class="">
            <span class="col">
              {{($index+1) | ordinal}}
            </span>

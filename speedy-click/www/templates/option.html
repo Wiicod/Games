@@ -5,7 +5,7 @@
     <div class="hero slide-up" >
       <div class="content">
         <!--<div class="avatar"><i class="icon ion-gear-a"></i></div>-->
-        <h5 class="title-game" style="color: #fff;" translate=""><span>O</span>ption</h5>
+        <h5 class="title-game" style="color: #fff;" translate="">Option</h5>
         <hr class="divider-short">
       </div>
     </div>
@@ -13,6 +13,10 @@
     <div class="card">
       <form class="list list-inset" ng-submit="SaveOption(langue,comment)">
         <div class="card-scroll">
+          <label class="item item-input hide">
+            <span class="input-label">Username : </span>
+            {{player.username}}
+          </label>
           <label class="item item-input item-select">
             <span class="input-label" translate="">Language </span>
             <select ng-model="langue" ng-options="l.value as l.name for l in langues">
@@ -24,8 +28,7 @@
               Your comment
             </div>
             <label class="item item-input">
-              <span class="input-label">title : </span>
-              <input type="text" ng-model="comment.title"/>
+              <input type="text" ng-model="comment.title" placeholder="{{'Title'|translate}}"/>
             </label>
             <label class="item item-input">
               <textarea id="textarea" placeholder="{{'Comments' | translate}}" ng-model="comment.description"></textarea>
