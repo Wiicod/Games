@@ -5,9 +5,12 @@
     <button class="button btn-gold-text" ng-click="popupGamePause()"><i class="icon ion-pause"></i></button>
   </ion-header-bar>
   <ion-content id="jeu" ng-click="Click($event)">
-    <div class="bar bar-subheader" style="top: 0; background: #B69E40;border-color: #B69E40; height: 36px;">
+    <div class="bar bar-subheader" style="top: 0; background: #c4a429;border-color: #c4a429; height: 36px;">
       <h2 class="title" style="line-height: 32px; height: 35px">
-        Rang : <span>{{rang}}</span> / <span>{{total}}</span> <i class="fa fa-user"></i>
+        <div style="float: left">
+          Rang : <span>{{rang}}</span>
+        </div>
+        <progress id="progressbar" max="100" value="{{ progressValue }}"> </progress>
       </h2>
     </div>
     <div class="bonus" id="bonus1">

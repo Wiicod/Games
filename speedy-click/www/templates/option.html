@@ -11,17 +11,16 @@
     </div>
     <!--/. Intro image -->
     <div class="card">
-      <form class="list list-inset" ng-submit="SaveOption(langue,comment)">
+      <form class="list list-inset" ng-submit="SaveOption(comment)">
         <div class="card-scroll">
-          <label class="item item-input hide">
-            <span class="input-label">Username : </span>
-            {{player.username}}
-          </label>
-          <label class="item item-input item-select">
+          <label class="item item-input hde">
             <span class="input-label" translate="">Language </span>
-            <select ng-model="langue" ng-options="l.value as l.name for l in langues">
-
-            </select>
+            <label class="toggle langue">
+              <span class="lang-label">{{langue.area}}</span><input type="checkbox" ng-model="langue.flag_area" >
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
           </label>
           <div class="gold-bg padding">
             <div class="item item-divider gold-bg text-center" translate="">

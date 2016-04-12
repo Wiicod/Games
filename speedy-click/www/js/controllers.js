@@ -67,7 +67,7 @@ angular.module('sc.controllers', [])
       $scope.$watch('filtre.flag_area',function(){
         $scope.filtre.area = $scope.filtre.flag_area?"local":"world";
       });
-       /* Pour les test*/
+       /* Pour les test
        $scope.scores=[
           {"player":"Zephyr","click":4125,"type":"zen","speed":890},
           {"player":"Zephyr","click":4125,"type":"zen","speed":445},
@@ -86,8 +86,8 @@ angular.module('sc.controllers', [])
           {"rank":4,"username":"Quentin","click":125,"country":"France","speed":4,type:"zen"},
           {"rank":4,"username":"Quentin","click":125,"country":"France","speed":4,type:"classic"}
         ];
-       //*/
-        /* cas reels
+       */
+        //* cas reels
       $ionicLoading.show({ template: '<span translate="">Chargement des scores</span><br><ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
         RankFactory.getRanks().then(function(ranks){
           $scope.ranks = ranks;
@@ -460,6 +460,9 @@ angular.module('sc.controllers', [])
 
     .controller('PlayZenCtrl',  ['$scope','$ionicPopup','$location','$interval','$timeout','ScoreFactory','RankFactory',
     function($scope,$ionicPopup,$location,$interval,$timeout,ScoreFactory,RankFactory) {
+
+      $scope.progressValue=50;
+
       $scope.type_jeu="zen";
       $scope.popupGamePause  = function() {
         $scope.StopChrono();
@@ -767,8 +770,8 @@ angular.module('sc.controllers', [])
 
     }])
 
-    .controller('OptionCtrl',  ['$scope','$rootScope','CommentFactory','$ionicPopup','$location','$ionicLoading',
-    function($scope,$rootScope,CommentFactory,$ionicPopup,$location,$ionicLoading) {
+    .controller('OptionCtrl',  ['$scope','$rootScope','CommentFactory','$ionicPopup','$location','$ionicLoading','gettextCatalog',
+    function($scope,$rootScope,CommentFactory,$ionicPopup,$location,$ionicLoading,gettextCatalog) {
 
       $scope.showCommentPopup = function() {
         // An elaborate, custom popup
@@ -799,7 +802,23 @@ angular.module('sc.controllers', [])
       };
 
       $scope.langues=[{value:"en",name:"English"},{value:"fr",name:"Français"}];
+      $scope.langue={
+        area:"en",
+        type:"classic",
+        flag_area:true,
+        flag_type:true,
+        rank_order:"click"
+      };
       setCardSize(-30);
+      $scope.$watch('langue.flag_area',function(){
+        $scope.langue.area = $scope.langue.flag_area?"Francais":"English";
+        if($scope.langue.area=="Francais"){
+          gettextCatalog.currentLanguage="fr";
+        }
+        else{
+          gettextCatalog.currentLanguage="en";
+        }
+      });
         $scope.SaveOption=function(langue,comment){
           console.info(comment,langue, $rootScope.player);
           if(langue!=null){

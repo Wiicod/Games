@@ -1,3 +1,10 @@
 1- L'internationalisation
-2- Rediger how to play
 3- Fixer la partie multijoueur
+
+
+4- un fai le mise à jour automatique du rank mondial dan le mode zen ? et la barre de chargement du nombre
+le points qui le separe de celui ki est devant lui ? les premiers doivents avoir des couronne à cote de leurs nom
+
+5- Faut mettre les ponctuation dans le how to play
+
+6- je te laisse le soin de faire la barre de progression du mode zen

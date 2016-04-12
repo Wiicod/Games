@@ -648,3 +648,47 @@ span.option{
 }
 
 .row + .row{margin-top: 0px;}
+
+.langue{
+  position: absolute;
+  top: 7px;
+  right: 0px;
+}
+
+.langue .track{
+  margin-left: 20px;
+  background: #c4a429;
+}
+.langue .lang-label{
+  font-size: 20px;
+  position: absolute;
+  right: 66px;
+  top: 6px;
+}
+.langue .track .handle{
+  left: inherit;
+}
+
+progress{
+  display: inline;
+  margin: 7px auto;
+  width: 50%;
+  float: right;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #000;
+
+  /* Get rid of default border in Firefox. */
+  border: none;
+
+  /* Dimensions */
+  height: 20px;
+}
+progress[value]::-moz-progress-bar {
+  background: #cc0000;
+}

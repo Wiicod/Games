@@ -9,7 +9,7 @@ var chrono_player;
 var chrono_multi;
 var chrono_player_zen;
 var server="http://54.200.82.255/api/";
-angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova','gettext'])
+angular.module('sc', ['ionic','sc.controllers','sc.filters','sc.services','ngCordova','gettext'])
 
 .run(function($ionicPlatform,$ionicLoading,DBQuery,RankFactory,ScoreFactory,$rootScope,$interval,gettextCatalog) {
   $ionicPlatform.ready(function() {
@@ -48,7 +48,7 @@ angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova','gettex
           alert("pas marcher");
         });*/
       },function(msg){
-        alert(msg);
+        //alert(msg);
         $ionicLoading.hide();
       });
       ScoreFactory.updateScoreOnline();
@@ -123,25 +123,7 @@ angular.module('sc', ['ionic','sc.controllers','sc.services','ngCordova','gettex
     $urlRouterProvider.otherwise('/home');
   })
 
-  .filter('ordinal', function() {
-    return function(input) {
-      var s=["th","st","nd","rd"],
-        v=input%100;
-      return input+(s[(v-20)%10]||s[v]||s[0]);
-    }
-  })
 
-  .filter('range', function() {
-    return function(input, total) {
-      total = parseInt(total);
-
-      for (var i=0; i<total; i++) {
-        input.push(i);
-      }
-
-      return input;
-    };
-  })
 
 .directive('scrollTo', function() {
   return {

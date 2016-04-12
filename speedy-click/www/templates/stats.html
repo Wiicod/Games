@@ -66,8 +66,8 @@
            <span class="col" translate="">Rank</span>
            <span class="col" translate="">Name</span>
            <!--<span class="col">Country</span>-->
-           <span class="col" ng-click="frank_order('click')"><span translate="">Hits</span> <i ng-if="filtre.rank_order=='click'" class="icon red ion-arrow-graph-up-right"></i></span>
-           <span class="col" ng-click="frank_order('speed')"><span translate="">Speed</span> <i ng-if="filtre.rank_order=='speed'" class="icon red ion-arrow-graph-up-right"></i></span>
+           <span class="col" ng-click="frank_order('click')"><span translate="">Hits</span> <i ng-if="filtre.rank_order=='speed'" class="icon red ion-arrow-graph-up-right"></i></span>
+           <span class="col" ng-click="frank_order('speed')"><span translate="">Speed</span> <i ng-if="filtre.rank_order=='click'" class="icon red ion-arrow-graph-up-right"></i></span>
         </span>
          </div>
          <!--<div  class="item row statsrank " scroll-to style="padding: 2px;" ng-repeat="r in [] | range:100" ng-class="showActive($index)">-->
@@ -85,7 +85,7 @@
             {{r.click}}
           </span>
            <span class="col  ">
-            {{r.speed}}
+            {{r.speed | arrondie:2}}
           </span>
 
            </div>
