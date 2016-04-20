@@ -358,7 +358,7 @@ angular.module('sc.services', [])
           var query = "SELECT max(click) as click FROM scores where type = ?;";
           DBQuery.query(query,[score.type]).then(function(res){
             var r;
-            alert(JSON.stringify(score)+"scontrer"+JSON.stringify(DBQuery.fetch(res)));
+            //alert(JSON.stringify(score)+"scontrer"+JSON.stringify(DBQuery.fetch(res)));
             max = DBQuery.fetch(res).click;
             if(max==undefined){
               deferred.resolve(true);

@@ -130,7 +130,7 @@ http://www.templatemo.com/preview/templatemo_400_polygon
     /*width: 50%;*/
     /*height: 32px;*/
     /*background-color: #d3b850;*/
-    background: url('../img/option_hexa_hover.png') no-repeat center center;
+    background: transparent;
     background-size: cover;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;

@@ -28,7 +28,7 @@ angular.module('sc.controllers', [])
         //alert("rank "+JSON.stringify(ranks));
       },function(msg){
         $ionicLoading.hide();
-        alert(msg);
+        //alert(msg);
       });
 
       ScoreFactory.getScores().then(function(scores){
@@ -37,7 +37,7 @@ angular.module('sc.controllers', [])
         //alert("scores "+JSON.stringify(scores));
       },function(msg){
         $ionicLoading.hide();
-        alert(msg);
+        //alert(msg);
       });//*/
     }
       $scope.filtre={
@@ -94,7 +94,7 @@ angular.module('sc.controllers', [])
           $ionicLoading.hide();
           //alert("rank "+JSON.stringify(ranks));
         },function(msg){
-          alert(msg);
+          //alert(msg);
           $ionicLoading.hide();
         });
 
@@ -102,7 +102,7 @@ angular.module('sc.controllers', [])
           $scope.scores = scores;
           $ionicLoading.hide();
         },function(msg){
-          alert(msg);
+          //alert(msg);
           $ionicLoading.hide();
         });//*/
 
@@ -190,7 +190,7 @@ angular.module('sc.controllers', [])
           }
         },
         function(data){
-          alert(JSON.stringify(data));
+          //alert(JSON.stringify(data));
         })
 
       $scope.showMultiPopup = function() {
@@ -260,7 +260,7 @@ angular.module('sc.controllers', [])
                     $scope.showWellcomePopup($scope.user.username);
                 },
                 function(data){
-                  alert(JSON.stringify(data));
+                  //alert(JSON.stringify(data));
                 });
                 return $scope.user.username;
               }
@@ -740,7 +740,7 @@ angular.module('sc.controllers', [])
                         //alert("addScore "+JSON.stringify(data));
                     },
                     function(data){
-                      alert(JSON.stringify(data));
+                      //alert(JSON.stringify(data));
                     })
 
                   }
@@ -812,18 +812,14 @@ angular.module('sc.controllers', [])
       setCardSize(-30);
       $scope.$watch('langue.flag_area',function(){
         $scope.langue.area = $scope.langue.flag_area?"Francais":"English";
-        if($scope.langue.area=="Francais"){
-          gettextCatalog.currentLanguage="fr";
-        }
-        else{
-          gettextCatalog.currentLanguage="en";
-        }
+        //if($scope.langue.area=="Francais"){
+        //  gettextCatalog.currentLanguage="fr";
+        //}
+        //else{
+        //  gettextCatalog.currentLanguage="en";
+        //}
       });
-        $scope.SaveOption=function(langue,comment){
-          console.info(comment,langue, $rootScope.player);
-          if(langue!=null){
-            // TODO redemarrer l'application en changeant la langue Evaris tu sais comment tu vas gerer ça
-          }
+        $scope.SaveOption=function(comment){
           if(comment!=null){
             $ionicLoading.show({ template: '<ion-spinner icon="dots" class="spinner-light"></ion-spinner>' });
             CommentFactory.addComment(comment).then(function(data){
@@ -831,7 +827,7 @@ angular.module('sc.controllers', [])
               $scope.showCommentPopup();
             },function(msg){
               $ionicLoading.hide();
-              alert(msg);
+              //alert(msg);
             });
           }
         }
@@ -846,8 +842,8 @@ function getCoordonnees(min,max){
 function setCardSize(x){
   var size=ny-93-44-100-x+30;
   $(".card-scroll").css('height',size+'px');
-  $("#textarea").css('height',(size-162)+'px');
-  $("#textarea").css('max-height',(size-162)+'px');
+  $("#textarea").css('height',(size-62)+'px');
+  $("#textarea").css('max-height',(size-62)+'px');
 }
 
 function formatTime(second){

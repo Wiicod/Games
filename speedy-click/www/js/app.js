@@ -112,7 +112,7 @@ angular.module('sc', ['ionic','sc.controllers','sc.filters','sc.services','ngCor
       })
       .state('option', {
         url: '/option',
-        templateUrl: 'templates/option.html',
+        templateUrl: 'templates/comment.html',
         controller: 'OptionCtrl'
       })
       .state('stats', {
